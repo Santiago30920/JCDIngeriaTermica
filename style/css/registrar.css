@@ -1,0 +1,98 @@
+.registro{
+    border: 1px solid #cfcfcf;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    margin-left: 18%;
+    width: 70%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.registro > h2{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.registro .Nombre{
+    margin-bottom: 1.5%;
+    border-radius: 20px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 80%;
+}
+.registro .Apellido{
+    margin-bottom: 1.5%;
+    border-radius: 20px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 80%;
+}
+.registro .Cedula{
+    margin-bottom: 1.5%;
+    border-radius: 20px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 80%;
+}
+.registro .Email{
+    margin-bottom: 1.5%;
+    border-radius: 20px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 80%;
+}
+.registro .Telefono{
+    margin-bottom: 1.5%;
+    border-radius: 20px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 80%;
+}
+.registro .Rol{
+    margin-bottom: 1%;
+    border-radius: 20px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 80%;
+}
+.registro .aceptar{
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    margin-top: 1.5%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: #31ff1e;
+    color: white;
+    margin-left: 1%;
+    font-size: 17px;
+}
+.Cancelar{
+    text-decoration: none;
+    background-color: #e62a2a;
+    color: white;
+    padding: 15px 20px 15px 20px;
+    margin-left: -81%;
+    margin-bottom: 1.5%;
+}
+.registro .aceptar:hover{
+    background-color: white;
+    border: 1px solid #31ff1e;
+    color: #31ff1e;
+}
+.Cancelar:hover{
+    background-color: white;
+    border: 1px solid #e62a2a;
+    color: #e62a2a;
+}
+.actualizar{
+    border: none;
+    background-color: #e6d92a;
+    color: white;
+    padding: 15px 20px 15px 20px;
+    margin-bottom: 1.5%;
+}
+.actualizar:hover{
+    border: 1px solid #e6d92a;
+    color: #e6d92a;
+    background-color: white;
+}

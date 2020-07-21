@@ -1,0 +1,44 @@
+footer{
+    padding-top: 2.5%;
+    background-color: rgb(41, 40, 40);
+    padding-bottom: 2.5%;
+}
+.contactos{
+    margin-left: 32.5%;
+}
+.contactos img{
+    margin-top: 1%;
+    width: 1.5%;
+}
+.contactos a{
+    padding: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+footer p{
+    color: white;
+    font-size: 18px;
+    margin-top: 2.5%;
+    margin-left: 1%;
+    text-align: center;
+}
+.mapas{
+    margin-top: 2.5%;
+    margin-left: 10%;
+}
+.contenedor1{    
+    background-color:  rgb(136, 0, 0);
+    padding-bottom: 2.5%;
+    padding-top: 2.5%;
+}
+.referencias{
+    width: 80%;
+    margin-left: 10%;
+}
+.referencias a{
+    text-decoration: none;
+    color: white;
+    align-items: center;
+    font-size: 20px;
+}

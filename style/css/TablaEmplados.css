@@ -1,0 +1,120 @@
+@import "compass/css3";
+*{
+    margin: 0;
+    padding: 0;   
+}
+.tabla{
+    margin-left: 25%;
+    max-width: 50%;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 40px;
+    margin-bottom: 20px;
+}
+.tabla h3{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.usuario{
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-left: 20%;
+}
+.usuario th,td{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 12px; 
+}
+.usuario td{
+    padding-bottom: 20px;
+}
+.usuario img{
+    width: 20px;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2
+}
+.tabla .Regresar{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 3%;
+    border: none;
+    background-color: tomato;
+    color: white;
+    padding: 20px 33.8px;
+    margin-left: 65%;
+}
+.Regresar:hover{
+    background-color: white;
+    border: 1px solid tomato;
+    color: tomato;
+}
+@media(max-width: 700px){
+    .tabla{
+        margin-left: 0%;
+        max-width: 100%;
+        border: none;
+        border-radius: none;
+    }
+    .tabla h3{
+        margin-left: 70%;
+        font-size: 14px;
+    }
+    .usuario th,td{
+        padding: 30px; 
+        font-size: 10px;
+    }
+}
+.Barra_de_busqueda{
+    margin-top: 20px;
+    margin-left: 50%;
+    margin-bottom: 20px;
+}
+.Barra_de_busqueda .busqueda{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 20px;
+    padding-right: 100px;
+    margin-left: -95%;
+}
+.Barra_de_busqueda .buscar{
+    border: none;
+    background-color: #ff3232;
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.Barra_de_busqueda .buscar:hover{
+    background-color: white;
+    border: 1px solid  #ff3232;
+    color:  #ff3232;
+}
+.Barra_de_busqueda > a{
+    text-decoration: none;
+    color: white;
+    background-color: #575757;
+    padding-top: 13.5px;
+    padding-bottom: 14.5px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.Barra_de_busqueda > a:hover{
+    background-color: white;
+    border: 1px solid #575757;
+    color: #575757;
+}
+.Barra_de_busqueda > button{
+    border: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(116, 116, 116);
+    color: #ffffff;
+}
+.Barra_de_busqueda > button:hover{
+    background-color: #ffffff;
+    border: 1px solid rgb(116, 116, 116);
+    color: rgb(116, 116, 116);
+}

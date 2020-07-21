@@ -1,0 +1,111 @@
+#calendario {
+    margin-top: 5%;
+    margin-left: 5%; 
+    border: 1px solid black ; 
+    max-width: 45%; 
+    background-color:#fffafa; 
+    text-align: center; 
+}
+/*tabla del calendario*/
+#diasc {
+    width: 100%;  
+    border-collapse: separate; 
+    border-spacing: 4px; 
+}
+#diasc th,#diasc td { 
+    font: normal 14pt arial; 
+    width: 70px; 
+    height: 30px; 
+}
+#diasc th { 
+    color: #ffffff; 
+    background-color: rgba(255, 0, 0, 0.829);
+}
+#diasc td { 
+    color: #492736; 
+    background-color: #9bf5ff; 
+}
+/*línea de la fecha actual*/
+#fechaactual { 
+    font: bold 12pt arial; 
+    padding: 0.4em 
+}
+#fechaactual i { 
+    cursor: pointer ; 
+}
+#fechaactual i:hover { 
+    color: blue; 
+    text-decoration: underline; 
+}
+/*formulario de busqueda de fechas*/
+#buscafecha { 
+    background-color: rgba(255, 42, 42, 0.911); 
+    color: white; 
+    padding: 5px 
+}
+#buscafecha select, #buscafecha input  { 
+    background-color: white; 
+    color: black; 
+    font: bold 10pt arial;  
+}
+#buscafecha [type=text]  { 
+    text-align: center; 
+}
+#buscafecha .fecha { 
+    border: none;
+    padding: 3px;
+    cursor: pointer; 
+    border: 1px solid black;
+}
+#bucafecha .fecha:hover {
+    border: 1 solid tomato;
+    color: tomato;
+}
+/*cabecera del calendario*/ 
+#anterior { 
+    float: left; 
+    width: 100px; 
+    font: bold 12pt arial;
+    padding: 0.5em 0.1em; 
+    cursor: pointer ; 
+}
+#posterior { 
+    float: right; 
+    width: 100px; 
+    font: bold 12pt arial; 
+    padding: 0.5em 0.1em; 
+    cursor: pointer ;}
+#anterior:hover {
+    color: rgb(207, 0, 0);
+    text-decoration: none;
+}
+#posterior:hover {
+    color: rgb(207, 0, 0);
+    text-decoration: none;
+}
+#titulos { 
+    font: normal 20pt "arial black"; 
+    padding: 0.2em; 
+}
+.busqueda{
+    margin-left: 55%;
+    margin-top: -19.5%;
+    margin-bottom: 5%;
+}
+.busqueda a{
+    border: 4px solid rgba(255, 42, 42, 0.911);
+    text-decoration: none;
+    color: black;
+    display: block;
+    width: 80%;
+    text-align: center;
+    padding: 25px;
+    margin-top: 1%;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.busqueda a:hover{
+    background-color: rgba(255, 42, 42, 0.911);
+    color: white;
+    border: none;
+}
