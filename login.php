@@ -1,29 +1,36 @@
+<?php
+?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JCD</title>
-    <link rel="stylesheet" href="style/css/header.css">
-    <link rel="stylesheet" href="style/css/footer.css">
+    <title>Login</title>
     <link rel="icon" href="style/log/Logo.png">
+    <link rel="stylesheet" href="style/css/header.css">
+    <link rel="stylesheet" href="style/css/login.css">
+    <link rel="stylesheet" href="style/css/footer.css">
+    <link rel="stylesheet" href="style/css/calendario.css">
 </head>
 
 <body>
     <header class="header-index">
-        <img src="style/log/Logo1.png" alt="logo" class="logo">
-        <a href="views/login.html">
-            <img src="style/log/login.png" alt="login" class="login">
-        </a>
-        <div class="menu">
-            <ul class="nav">
-                <li><a href="#">Menú</a></li>
-                <li><a href="#">Atencion al cliente</a></li>
-            </ul>
-        </div>
+        <img src="style/log/Logo1.png" alt="logo" class="logo" style="margin-bottom: 2.5%;">
     </header>
-
+    <div class="inicio">
+        <form action="Dao/Login.php" method="post">
+            <h2>INICIO DE SESION</h2>
+            <input type="email" name="txtEmail" class="contenedor" placeholder="Ingrese email" required>
+            <input type="password" name="txtPassword" class="contenedor" placeholder="Ingrese contraseña" required>
+            <br>
+            <input type="submit" class="Aceptar" value="Ingresar">
+            <a href="../index.html" class="Cancelar">Cancelar</a>
+            <br>
+            <a href="#" class="olvide">¿Has olvidado tu contraseña?</a>
+            <br><br><br>
+        </form>
+    </div>
     <footer>
         <div class="contactos">
             <img src="style/log/telefono1.png" alt="telefo">
@@ -61,3 +68,5 @@
 </body>
 
 </html>
+    <?php
+?>

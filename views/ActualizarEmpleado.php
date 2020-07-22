@@ -1,15 +1,22 @@
+<?php     
+    include '../Conexion/Conexion.php';
+    $id = $_GET['id'];
+    $setencia = $bd->prepare("SELECT * FROM empleados WHERE Cedula = ?");
+    $resultado = $setencia->execute([$id]);
+    $empleado = $setencia->fetch(PDO::FETCH_OBJ);
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empresa</title>
+    <title>Actualizar empleado</title>
     <link rel="icon" href="../style/log/Logo.png">
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
     <link rel="stylesheet" href="../style/css/header-menu.css">
-    <link rel="stylesheet" href="../style/css/TablaEmplados.css">
+    <link rel="stylesheet" href="../style/css/registrar.css">
 </head>
 
 <body>
@@ -27,35 +34,26 @@
             </ul>
         </div>
     </header>
-    <div class="Barra_de_busqueda">
-        <input type="text" placeholder="Busqueda" class="busqueda">
-        <input type="submit" value="Buscar" class="buscar">
-        <a href="../views/RegistrarEmpresa.html">Registro</a>
-        <button>Inactivos</button>
-        <button>Activos</button>
-    </div>
-    <div class="tabla" style="width: 45%; margin-left: 28%;">
-        <h3>Lista de empleado registrados</h3>
-        <table class="usuario" style="margin-left: 20%;">
-            <th>Nit</th>
-            <th>Nombre</th>
-            <th>Telefono</th>
-            <th>Email</th>
-            <th>Direccion</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <a href="" class="boton-actualizar"></a>
-                </td>
-            </tr>
-        </table>
+    <div class="registro">
+        <h2>Actualizacion de usuarios</h2>
+        <form action="../Dao/EditarEmpleado.php" class="Registrar" method="POST">
+            <input type="text" name="txtNombre" value="<?php echo $empleado->Nombre; ?>" class="Nombre" placeholder="Ingrese nombre" required>
+            <input type="text" name="txtApellido" value="<?php echo $empleado->Apellidos; ?>" class="Apellido" placeholder="Ingrese apellido" required>
+            <input type="number" name="txtCedula" value="<?php echo $empleado->Cedula; ?>" class="Cedula" placeholder="Ingrese cedula" required disabled>
+            <input type="email" name="txtEmail" value="<?php echo $empleado->Email; ?>" class="Email" placeholder="Ingrese email" required>
+            <input type="number" name="txtTelefono"  value="<?php echo $empleado->Telefono; ?>" class="Telefono" placeholder="Ingrese Telefono" required>
+            <select name="txtEstado" id="Rol" class="Rol" required>
+                <option value="<?php echo $empleado->Estado?>"><?php echo $empleado->Estado?></option>
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+            </select>
+            <input type="hidden" name="oculto">
+            <input type="hidden" name="id2" value="<?php echo $empleado->Cedula; ?>">
+            <br>
+            <input type="submit" class="actualizar" value="Actualizar">
+            <a href="../views/Empleados.php" class="Cancelar">Cancelar</a>
+            <br><br>
+        </form>
     </div>
     <footer>
         <div class="contactos">

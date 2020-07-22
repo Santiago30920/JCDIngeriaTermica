@@ -1,3 +1,19 @@
+<?php
+session_start();
+if (!isset($_SESSION['Cedula'])) {
+    header('Location:../login.php');
+}elseif(isset($_SESSION['Cedula'])){
+    include '../Conexion/Conexion.php';
+    $sentencia = $bd->query('SELECT * FROM empleados');
+    $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
+}else{
+    echo '<script type="text/javascript">
+    alert("error en el sistema");
+    window.location.href="../login.php";
+    </script>';
+}
+$estado="Administrador";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -30,13 +46,13 @@
     <div class="Barra_de_busqueda">
         <input type="text" placeholder="Busqueda" class="busqueda">
         <input type="submit" value="Buscar" class="buscar">
-        <a href="#">Registro</a>
+        <a href="registrarEmpleado.php">Registro</a>
         <button>Inactivos</button>
         <button>Activos</button>
     </div>
-    <div class="tabla" >
+    <div class="tabla">
         <h3>Lista de empresas registradas</h3>
-        <table class="usuario">
+        <table class="usuario" style="margin-left: 2%">
             <th>Nombre</th>
             <th>Apellidos</th>
             <th>Cedula</th>
@@ -45,19 +61,26 @@
             <th>Rol</th>
             <th>Estado</th>
             <th>Acciones</th>
+            <?php
+                foreach($empleado as $dato){
+            ?>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><?php echo $dato->Nombre;?></td>
+                <td><?php echo $dato->Apellidos;?></td>
+                <td><?php echo $dato->Cedula;?></td>
+                <td><?php echo $dato->Email;?></td>
+                <td><?php echo $dato->Telefono;?></td>
+                <td><?php echo $dato->Rol;?></td>
+                <td><?php echo $dato->Estado;?></td>
                 <td>
-                    <a href="" class="boton-actualizar"></a>
+                    <a href="ActualizarEmpleado.php?id=<?php echo $dato->Cedula;?>" class="boton-actualizar" style="text-decoration:none; color:black">Actualizar</a>
                 </td>
             </tr>
+            <?php
+                }
+            ?>
         </table>
+        <br>
     </div>
     <footer>
         <div class="contactos">

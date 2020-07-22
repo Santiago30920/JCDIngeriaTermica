@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar empleado</title>
+    <title>Registar empleado</title>
     <link rel="icon" href="../style/log/Logo.png">
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
@@ -28,19 +28,19 @@
         </div>
     </header>
     <div class="registro">
-        <h2>Actualizacion de usuarios</h2>
-        <form action="#" class="Registrar" method="POST">
+        <h2>Registro de empleados</h2>
+        <form action="../Dao/registrarEmpleado.php" class="Registrar" method="POST">
             <input type="text" name="txtNombre" class="Nombre" placeholder="Ingrese nombre" required>
             <input type="text" name="txtApellido" class="Apellido" placeholder="Ingrese apellido" required>
             <input type="number" name="txtCedula" class="Cedula" placeholder="Ingrese cedula" required>
             <input type="email" name="txtEmail" class="Email" placeholder="Ingrese email" required>
             <input type="number" name="txtTelefono" class="Telefono" placeholder="Ingrese Telefono" required>
-            <select name="txtEstado" id="Rol" class="Rol" required>
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>
+            <select name="txtRol" id="Rol" class="Rol" required>
+                <option value="Administrador">Adaministrador</option>
+                <option value="Empleados">Empleado</option>
             </select>
             <br>
-            <input type="submit" class="actualizar" value="Actualizar">
+            <input type="submit" class="aceptar" value="Registrar">
             <a href="../views/Empleados.html" class="Cancelar">Cancelar</a>
             <br><br>
         </form>

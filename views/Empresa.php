@@ -1,22 +1,38 @@
+<?php
+session_start();
+if (!isset($_SESSION['Cedula'])) {
+    header('Location:../login.php');
+}elseif(isset($_SESSION['Cedula'])){
+    include '../Conexion/Conexion.php';
+    $sentencia = $bd->query('SELECT * FROM empresas');
+    $empresa = $sentencia->fetchAll(PDO::FETCH_OBJ);
+}else{
+    echo '<script type="text/javascript">
+    alert("error en el sistema");
+    window.location.href="../login.php";
+    </script>';
+}
+$estado="Administrador";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registar empleado</title>
+    <title>Empresa</title>
     <link rel="icon" href="../style/log/Logo.png">
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
     <link rel="stylesheet" href="../style/css/header-menu.css">
-    <link rel="stylesheet" href="../style/css/registrar.css">
+    <link rel="stylesheet" href="../style/css/TablaEmplados.css">
 </head>
 
 <body>
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
         <img src="../style/log/login.png" alt="login" class="login">
-        <img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar">
+        <a href="../Dao/CerrarSession.php"><img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar"></a>
         <div class="menu">
             <ul class="nav">
                 <li><a href="menu.html">Menú</a></li>
@@ -27,23 +43,41 @@
             </ul>
         </div>
     </header>
-    <div class="registro">
-        <h2>Registro de empleados</h2>
-        <form action="#" class="Registrar" method="POST">
-            <input type="text" name="txtNombre" class="Nombre" placeholder="Ingrese nombre" required>
-            <input type="text" name="txtApellido" class="Apellido" placeholder="Ingrese apellido" required>
-            <input type="number" name="txtCedula" class="Cedula" placeholder="Ingrese cedula" required>
-            <input type="email" name="txtEmail" class="Email" placeholder="Ingrese email" required>
-            <input type="number" name="txtTelefono" class="Telefono" placeholder="Ingrese Telefono" required>
-            <select name="txtRol" id="Rol" class="Rol" required>
-                <option value="Administrador">Adaministrador</option>
-                <option value="Empleados">Empleado</option>
-            </select>
-            <br>
-            <input type="submit" class="aceptar" value="Registrar">
-            <a href="../views/Empleados.html" class="Cancelar">Cancelar</a>
-            <br><br>
-        </form>
+    <div class="Barra_de_busqueda">
+        <input type="text" placeholder="Busqueda" class="busqueda">
+        <input type="submit" value="Buscar" class="buscar">
+        <a href="../views/RegistrarEmpresa.html">Registro</a>
+        <button>Inactivos</button>
+        <button>Activos</button>
+    </div>
+    <div class="tabla" style="width: 45%; margin-left: 28%;">
+        <h3>Lista de empleado registrados</h3>
+        <table class="usuario" style="margin-left: 20%;">
+            <th>Nit</th>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Direccion</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+            <?php
+                foreach($empresa as $dato){
+            ?>
+            <tr>
+                <td><?php echo $dato->Nit;?></td>
+                <td><?php echo $dato->Nombre;?></td>
+                <td><?php echo $dato->Telefono;?></td>
+                <td><?php echo $dato->Email;?></td>
+                <td><?php echo $dato->Direccion;?></td>
+                <td><?php echo $dato->Estado;?></td>
+                <td>
+                    <a href="" class="boton-actualizar"></a>
+                </td>
+            </tr>
+            <?php
+                }
+            ?>
+        </table>
     </div>
     <footer>
         <div class="contactos">
