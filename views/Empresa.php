@@ -46,7 +46,7 @@ $estado="Administrador";
     <div class="Barra_de_busqueda">
         <input type="text" placeholder="Busqueda" class="busqueda">
         <input type="submit" value="Buscar" class="buscar">
-        <a href="../views/RegistrarEmpresa.html">Registro</a>
+        <a href="../views/RegistrarEmpresa.php">Registro</a>
         <button>Inactivos</button>
         <button>Activos</button>
     </div>
@@ -71,7 +71,7 @@ $estado="Administrador";
                 <td><?php echo $dato->Direccion;?></td>
                 <td><?php echo $dato->Estado;?></td>
                 <td>
-                    <a href="" class="boton-actualizar"></a>
+                    <a href="actualizarEmpresa.php?id=<?php echo $dato->Nit;?>"  style="text-decoration:none; color:black" class="boton-actualizar">Editar</a>
                 </td>
             </tr>
             <?php

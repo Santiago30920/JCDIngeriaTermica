@@ -1,3 +1,19 @@
+<?php
+session_start();
+if (!isset($_SESSION['Cedula'])) {
+    header('Location:../login.php');
+}elseif(isset($_SESSION['Cedula'])){
+    include '../Conexion/Conexion.php';
+    $sentencia = $bd->query('SELECT * FROM empleados');
+    $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
+}else{
+    echo '<script type="text/javascript">
+    alert("error en el sistema");
+    window.location.href="../login.php";
+    </script>';
+}
+$estado="Administrador";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -16,7 +32,7 @@
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
         <img src="../style/log/login.png" alt="login" class="login">
-        <img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar">
+        <a href="../Dao/CerrarSession.php"><img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar"></a>
         <div class="menu">
             <ul class="nav">
                 <li><a href="menu.html">Menú</a></li>
@@ -29,7 +45,7 @@
     </header>
     <div class="registro">
         <h2>Registro de empresa</h2>
-        <form action="#" class="Registrar" method="POST">
+        <form action="../Dao/RegistrarEmpresa.php" class="Registrar" method="POST">
             <input type="number" name="txtNit" class="Nombre" placeholder="Ingrese Nit de la empresa" required>
             <input type="text" name="txtNombre" class="Apellido" placeholder="Ingrese Nombre" required>
             <input type="number" name="txtTelefono" class="Cedula" placeholder="Ingrese telefono" required>

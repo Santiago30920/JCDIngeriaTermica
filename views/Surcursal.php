@@ -1,15 +1,31 @@
+<?php
+session_start();
+if (!isset($_SESSION['Cedula'])) {
+    header('Location:../login.php');
+}elseif(isset($_SESSION['Cedula'])){
+    include '../Conexion/Conexion.php';
+    $sentencia = $bd->query('SELECT * FROM sucursal');
+    $surcursal = $sentencia->fetchAll(PDO::FETCH_OBJ);
+}else{
+    echo '<script type="text/javascript">
+    alert("error en el sistema");
+    window.location.href="../login.php";
+    </script>';
+}
+$estado="Administrador";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registar empresa</title>
+    <title>Surcursal</title>
     <link rel="icon" href="../style/log/Logo.png">
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
     <link rel="stylesheet" href="../style/css/header-menu.css">
-    <link rel="stylesheet" href="../style/css/registrar.css">
+    <link rel="stylesheet" href="../style/css/TablaEmplados.css">
 </head>
 
 <body>
@@ -27,23 +43,39 @@
             </ul>
         </div>
     </header>
-    <div class="registro">
-        <h2>Actualizacion de empresa</h2>
-        <form action="#" class="Registrar" method="POST">
-            <input type="number" name="txtNit" class="Nombre" placeholder="Ingrese Nit de la empresa" required>
-            <input type="text" name="txtNombre" class="Apellido" placeholder="Ingrese Nombre" required>
-            <input type="number" name="txtTelefono" class="Cedula" placeholder="Ingrese telefono" required>
-            <input type="email" name="txtEmail" class="Email" placeholder="Ingrese email" required>
-            <input type="text" name="txtDireccion" class="Telefono" placeholder="Ingrese direccion" required>
-            <select name="txtEstado" id="Rol" class="Rol" required>
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>
-            </select>
-            <br>
-            <input type="submit" class="actualizar" value="Actualizar">
-            <a href="../views/Empresa.html" class="Cancelar">Cancelar</a>
-            <br><br>
-        </form>
+    <div class="Barra_de_busqueda">
+        <input type="text" placeholder="Busqueda" class="busqueda">
+        <input type="submit" value="Buscar" class="buscar">
+        <a href="../views/RegistrarSurcursal.html">Registro</a>
+        <button>Inactivos</button>
+        <button>Activos</button>
+    </div>
+    <div class="tabla" style="width: 45%; margin-left: 28%;">
+        <h3>Lista de surcursales registradas</h3>
+        <table class="usuario" style="margin-left: 20%;">
+            <th>Surcursal No.</th>
+            <th>Nombre de la surcursal</th>
+            <th>Telefono</th>
+            <th>Nit de empresa</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+            <?php
+                foreach($surcursal as $dato){
+            ?>
+            <tr>
+                <td><?php echo $dato->idSucursal?></td>
+                <td><?php echo $dato->NombreSucursal?></td>
+                <td><?php echo $dato->Telefono?></td>
+                <td><?php echo $dato->NitEmpresa?></td>
+                <td><?php echo $dato->Estado?></td>
+                <td>
+                    <a href="ActualizarSurcursal.php?id=<?php echo $dato->idSucursal;?>" class="boton-actualizar" style="text-decoration:none; color:black">Editar</a>
+                </td>
+            </tr>
+            <?php
+                }
+            ?>
+        </table>
     </div>
     <footer>
         <div class="contactos">

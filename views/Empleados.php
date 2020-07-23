@@ -73,7 +73,7 @@ $estado="Administrador";
                 <td><?php echo $dato->Rol;?></td>
                 <td><?php echo $dato->Estado;?></td>
                 <td>
-                    <a href="ActualizarEmpleado.php?id=<?php echo $dato->Cedula;?>" class="boton-actualizar" style="text-decoration:none; color:black">Actualizar</a>
+                    <a href="ActualizarEmpleado.php?id=<?php echo $dato->Cedula;?>" class="boton-actualizar" style="text-decoration:none; color:black">Editar</a>
                 </td>
             </tr>
             <?php

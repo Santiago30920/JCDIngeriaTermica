@@ -1,3 +1,21 @@
+<?php
+session_start();
+if (!isset($_SESSION['Cedula'])) {
+    header('Location:../login.php');
+}elseif(isset($_SESSION['Cedula'])){
+    include '../Conexion/Conexion.php';
+    $sentencia = $bd->query('SELECT * FROM sucursal');
+    $surcursal = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    $sentencia1 = $bd->query('SELECT * FROM empresas');
+    $empresas = $sentencia1->fetchAll(PDO::FETCH_OBJ);
+}else{
+    echo '<script type="text/javascript">
+    alert("error en el sistema");
+    window.location.href="../login.php";
+    </script>';
+}
+$estado="Administrador";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -29,9 +47,16 @@
     </header>
     <div class="registro">
         <h2>Registro de surcursal</h2>
-        <form action="#" class="Registrar" method="POST">
+        <form action="../Dao/registrarSurcursal.php" class="Registrar" method="POST">
             <input type="text" name="txtNombre" class="Nombre" placeholder="Ingrese nombre surcursal" required>
             <input type="number" name="txtTelefono" class="Cedula" placeholder="Ingrese telefono" required>
+            <select name="txtNit" class="Rol" id="Rol" placeholder="Ingrese Nit" required>
+                <?php
+                    foreach($empresas as $dato){
+                ?>
+                    <option value="<?php echo $dato->Nit;?>"><?php echo $dato->Nit;?></option>
+                <?php } ?>
+            </select>
             <br>
             <input type="submit" class="aceptar" value="Registrar">
             <a href="../views/Surcursal.html" class="Cancelar">Cancelar</a>

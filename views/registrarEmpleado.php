@@ -1,3 +1,19 @@
+<?php
+session_start();
+if (!isset($_SESSION['Cedula'])) {
+    header('Location:../login.php');
+}elseif(isset($_SESSION['Cedula'])){
+    include '../Conexion/Conexion.php';
+    $sentencia = $bd->query('SELECT * FROM empleados');
+    $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
+}else{
+    echo '<script type="text/javascript">
+    alert("error en el sistema");
+    window.location.href="../login.php";
+    </script>';
+}
+$estado="Administrador";
+?>
 <!DOCTYPE html>
 <html lang="es">
 

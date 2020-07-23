@@ -1,15 +1,33 @@
+<?php
+session_start();
+if (!isset($_SESSION['Cedula'])) {
+    header('Location:../login.php');
+}elseif(isset($_SESSION['Cedula'])){
+    include '../Conexion/Conexion.php';
+    $id = $_GET['id'];
+    $setencia = $bd->prepare("SELECT * FROM sucursal WHERE idSucursal = ?");
+    $resultado = $setencia->execute([$id]);
+    $empleado = $setencia->fetch(PDO::FETCH_OBJ);
+}else{
+    echo '<script type="text/javascript">
+    alert("error en el sistema");
+    window.location.href="../login.php";
+    </script>';
+}
+$estado="Administrador";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surcursal</title>
+    <title>Registar empresa</title>
     <link rel="icon" href="../style/log/Logo.png">
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
     <link rel="stylesheet" href="../style/css/header-menu.css">
-    <link rel="stylesheet" href="../style/css/TablaEmplados.css">
+    <link rel="stylesheet" href="../style/css/registrar.css">
 </head>
 
 <body>
@@ -27,41 +45,29 @@
             </ul>
         </div>
     </header>
-    <div class="Barra_de_busqueda">
-        <input type="text" placeholder="Busqueda" class="busqueda">
-        <input type="submit" value="Buscar" class="buscar">
-        <a href="../views/RegistrarSurcursal.html">Registro</a>
-        <button>Inactivos</button>
-        <button>Activos</button>
-    </div>
-    <div class="tabla" style="width: 45%; margin-left: 28%;">
-        <h3>Lista de surcursales registradas</h3>
-        <table class="usuario" style="margin-left: 20%;">
-            <th>Id Surcursal</th>
-            <th>Nombre de la surcursal</th>
-            <th>Telefono</th>
-            <th>Nit de empresa</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <a href="" class="boton-actualizar"></a>
-                </td>
-            </tr>
-        </table>
+    <div class="registro">
+        <h2>Actualizacion de surcursal</h2>
+        <form action="../Dao/editarSurcursal.php" class="Registrar" method="POST">
+            <input type="text" name="txtId" value="<?php echo $empleado->idSucursal?>" class="Cedula" placeholder="Ingrese el id" required disabled>
+            <input type="text" name="txtNombre" value="<?php echo $empleado->NombreSucursal?>" class="Nombre" placeholder="Ingrese nombre surcursal" required>
+            <input type="number" name="txtTelefono" class="Cedula" value="<?php echo $empleado->Telefono?>" placeholder="Ingrese telefono" required>
+            <select name="txtEstado" id="Estado" class="Rol" required>
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+            </select>
+            <br>
+            <input type="submit" class="actualizar" value="Actualizar">
+            <a href="../views/Surcursal.html" class="Cancelar">Cancelar</a>
+            <br><br>
+        </form>
     </div>
     <footer>
         <div class="contactos">
-            <img src="../style/log/telefono1.png" alt="telefo">
+            <img src="../style/log/telefono1.png" alt="telefono">
             <a href="#">Equipos: 311 8518533</a>
-            <img src="../style/log/telefono1.png" alt="telefo">
+            <img src="../style/log/telefono1.png" alt="telefono">
             <a href="#">Equipos: 321 9144584</a>
-            <img src="../style/log/telefono1.png" alt="telefo">
+            <img src="../style/log/telefono1.png" alt="telefono">
             <a href="#">Equipos: 310 2529091</a>
         </div>
         <p>
