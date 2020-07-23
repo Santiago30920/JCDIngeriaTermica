@@ -6,21 +6,19 @@
     $id = $_POST['id2'];
     $nombre = $_POST['txtNombre'];
     $telefono = $_POST['txtTelefono'];
-    $email = $_POST['txtEmail'];
-    $direccion= $_POST['txtDireccion'];
     $estado = $_POST['txtEstado'];
     
-    $setencia = $bd->prepare("UPDATE empresas SET Nombre = ?, Telefono = ?, Email = ?, Direccion = ?, Estado = ? WHERE Nit = ?;");
-    $resultado = $setencia->execute([$nombre, $telefono, $email, $direccion, $estado, $id]);
+    $setencia = $bd->prepare("UPDATE sucursal SET NombreSucursal = ?, Telefono = ?, Estado = ? WHERE idSucursal = ?;");
+    $resultado = $setencia->execute([$nombre, $telefono, $estado, $id]);
     if($resultado === TRUE){
         echo '<script type="text/javascript">
         alert("Se ha actualizado correctamente");
-        window.location.href="../views/Empresa.php";
+        window.location.href="../views/Surcursal.php";
         </script>';
     }else{
         echo '<script type="text/javascript">
-        alert("email ya esta registrado intente nuevamente");
-        window.location.href="../views/Empresa.php";
+        alert("Error, por favor intentelo nueva mente");
+        window.location.href="../views/Surcursal.php";
         </script>';
     }
 ?>

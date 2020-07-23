@@ -13,7 +13,7 @@
         </script>';
     }elseif($setencia->rowCount() == 1){
        $_SESSION['Cedula'] = $datos->Cedula;
-       $_SESSION['Nombre'] = $datos->Nombres;
+       $_SESSION['Nombre'] = $datos->Nombre;
        $_SESSION['Apellidos'] = $datos->Apellidos;
        $_SESSION['Email'] = $datos->Email;
        $_SESSION['Telefono'] = $datos->Telefono;

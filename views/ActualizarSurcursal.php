@@ -55,6 +55,8 @@ $estado="Administrador";
                 <option value="Activo">Activo</option>
                 <option value="Inactivo">Inactivo</option>
             </select>
+            <input type="hidden" name="oculto">
+            <input type="hidden" name="id2" value="<?php echo $empleado->idSucursal; ?>">
             <br>
             <input type="submit" class="actualizar" value="Actualizar">
             <a href="../views/Surcursal.html" class="Cancelar">Cancelar</a>
