@@ -39,7 +39,7 @@ $estado="Administrador";
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
         <img src="../style/log/login.png" alt="login" class="login">
-        <img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar">
+        <a href="../Dao/CerrarSession.php"><img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar"></a>
         <div class="menu" style="margin-right: 35%;">
             <ul class="nav">
             <li><a href="menu.php">Menú</a></li>
