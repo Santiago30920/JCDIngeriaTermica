@@ -1,3 +1,21 @@
+<?php
+session_start();
+if (!isset($_SESSION['Cedula'])) {
+    header('Location:../login.php');
+}elseif(isset($_SESSION['Cedula'])){
+    include '../Conexion/Conexion.php';
+    $id = $_GET['id'];
+    $setencia = $bd->prepare("SELECT * FROM mantenimientos WHERE idMantenimientos = ?");
+    $resultado = $setencia->execute([$id]);
+    $empresa = $setencia->fetch(PDO::FETCH_OBJ);
+}else{
+    echo '<script type="text/javascript">
+    alert("error en el sistema");
+    window.location.href="../login.php";
+    </script>';
+}
+$estado="Administrador";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,11 +38,11 @@
         <img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar">
         <div class="menu" style="margin-right: 35%;">
             <ul class="nav">
-                <li><a href="menu.html">Menú</a></li>
-                <li><a href="Empresa.html">Empresa</a></li>
-                <li><a href="Surcursal.html">Surcursal</a></li>
-                <li><a href="Empleados.html">Empleados</a></li>
-                <li><a href="Servicios.html">Servicios</a></li>
+                <li><a href="menu.php">Menú</a></li>
+                <li><a href="Empresa.php">Empresa</a></li>
+                <li><a href="Surcursal.php">Surcursal</a></li>
+                <li><a href="Empleados.php">Empleados</a></li>
+                <li><a href="Servicios.php">Servicios</a></li>
             </ul>
         </div>
     </header>
@@ -32,15 +50,19 @@
             <br>
             <h2>Registro de Mantenimientos</h2>
             <br><br>
+            <form action="../Dao/editarServicios.php" class="Registrar" method="POST">
             <label class="especificacion" style="margin-left: -0%;">Fecha de ingreso:</label>
-            <input type="date" name="txtIngreso" id="ingreso" class="Fecha">
+            <input type="date" name="txtIngreso" value="<?php echo $empresa->FechaIngreso?>" id="ingreso" class="Fecha">
             <label class="especificacion" style="margin-left: 10%;">Fecha de salida:</label>
-            <input type="date" name="txtSalida" id="salida" class="Fecha">
+            <input type="date" name="txtSalida" value="<?php echo $empresa->FechaSalida?>" id="salida" class="Fecha">
             <select name="txtEstado" id="Diagnostico" class="Rol-50">
+                <option value="<?php echo $empresa->Estado?>"><?php echo $empresa->Estado?></option>
                 <option value="En espera">En espera</option>
                 <option value="Resuelto">Resuelto</option>
             </select>
-            <textarea name="txtObservaciones" id="" cols="165" rows="5" placeholder="Observaciones"></textarea>
+            <textarea name="txtObservaciones" id="" cols="165" rows="5" placeholder="Observaciones"><?php echo $empresa->Observaciones?></textarea>
+            <input type="hidden" name="oculto">
+            <input type="hidden" name="id3" value="<?php echo $empresa->idMantenimientos;?>">
             <br>
             <input type="submit" class="actualizar" value="Actualizar">
             <a href="../views/Surcursal.html" class="Cancelar">Cancelar</a>

@@ -17,3 +17,4 @@
         window.location.href="../views/RegistrarEmpresa.php";
         </script>';
     }
+    ?>

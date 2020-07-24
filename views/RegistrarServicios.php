@@ -1,3 +1,25 @@
+<?php
+session_start();
+if (!isset($_SESSION['Cedula'])) {
+    header('Location:../login.php');
+}elseif(isset($_SESSION['Cedula'])){
+    include '../Conexion/Conexion.php';
+    $sentencia = $bd->query('SELECT * FROM equipos');
+    $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    $sentencia = $bd->query('SELECT * FROM mantenimientos');
+    $servicio= $sentencia->fetchAll(PDO::FETCH_OBJ);
+    $sentencia = $bd->query('SELECT * FROM sucursal');
+    $surcursal = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    $sentencia = $bd->query('SELECT * FROM empleados');
+    $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
+}else{
+    echo '<script type="text/javascript">
+    alert("error en el sistema");
+    window.location.href="../login.php";
+    </script>';
+}
+$estado="Administrador";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,17 +42,17 @@
         <img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar">
         <div class="menu" style="margin-right: 35%;">
             <ul class="nav">
-                <li><a href="menu.html">Menú</a></li>
-                <li><a href="Empresa.html">Empresa</a></li>
-                <li><a href="Surcursal.html">Surcursal</a></li>
-                <li><a href="Empleados.html">Empleados</a></li>
-                <li><a href="Servicios.html">Servicios</a></li>
+            <li><a href="menu.php">Menú</a></li>
+                <li><a href="Empresa.php">Empresa</a></li>
+                <li><a href="Surcursal.php">Surcursal</a></li>
+                <li><a href="Empleados.php">Empleados</a></li>
+                <li><a href="Servicios.php">Servicios</a></li>
             </ul>
         </div>
     </header>
     <div class="registro">
         <h2>Registro de equipos</h2>
-        <form action="#" class="Registrar" method="POST">
+        <form action="../Dao/RegistrarServicio.php" class="Registrar" method="POST">
             <input type="text" name="txtNombre" class="Nombre-50" style="margin-right: 11%;" placeholder="Nombre del equipo">
             <input type="text" name="txtReferencia" style="margin-left: -2%;" class="Nombre-50" placeholder="referencia">
             <input type="text" name="txtVoltaje"  style="margin-right: 11%;" class="Nombre-50" placeholder="Voltaje">
@@ -39,8 +61,28 @@
                 <option value="P">P</option>
                 <option value="N">N</option>
             </select>
+            <select name="txtNombreE" id="gas" class="Rol-50">
+            <option value="">Seleccione nombre responsable</option>
+                <?php 
+                    foreach($empleado as $dato1){
+                ?>
+                <option value="<?php echo $dato1->Cedula?>"><?php echo $dato1->Nombre?></option>
+                <?php 
+                    } 
+                ?>
+            </select>
             <input type="text" name="txtMarca" style="margin-right: 11%;" class="Nombre-50" placeholder="Marca">
             <input type="number" name="txtSerial"  style="margin-left: -2%;" class="Nombre-50" placeholder="Numero de serie">
+            <select name="txtSurcursal" id="gas" class="Rol-50">
+                <option value="">Seleccione nombre de la surcursal</option>
+                <?php 
+                    foreach($surcursal as $dato){
+                ?>
+                <option value="<?php echo $dato->idSucursal?>"><?php echo $dato->NombreSucursal?></option>
+                <?php 
+                    } 
+                ?>
+            </select>
             <input type="text" name="txtCapacidad" class="Nombre" style="width: 84.5%;" placeholder="Capacidad">
             <br>
             <textarea name="txtDescripcion" class="Descripcion" id="Descripcion" cols="165" rows="5"
@@ -58,7 +100,7 @@
                 <option value="Preventivo">Preventivo</option>
                 <option value="Correctivo">Correctivo</option>
             </select>
-            <textarea name="txtObservaciones" id="" cols="165" rows="5" placeholder="Observaciones"></textarea>
+            <textarea name="txtObservaciones" id="Observaciones" cols="165" rows="5" placeholder="Observaciones"></textarea>
             <br>
             <input type="submit" class="aceptar" value="Registrar">
             <a href="../views/Surcursal.html" class="Cancelar">Cancelar</a>

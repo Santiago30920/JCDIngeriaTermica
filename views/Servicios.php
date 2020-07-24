@@ -1,3 +1,21 @@
+<?php
+session_start();
+if (!isset($_SESSION['Cedula'])) {
+    header('Location:../login.php');
+}elseif(isset($_SESSION['Cedula'])){
+    include '../Conexion/Conexion.php';
+    $sentencia = $bd->query('SELECT * FROM mantenimientos');
+    $sentencia1 = $bd->query('SELECT * FROM equipos');
+    $servicios = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    $equipos = $sentencia1->fetchAll(PDO::FETCH_OBJ);
+}else{
+    echo '<script type="text/javascript">
+    alert("error en el sistema");
+    window.location.href="../login.php";
+    </script>';
+}
+$estado="Administrador";
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,11 +34,11 @@
         <img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar">
         <div class="menu" >
             <ul class="nav">
-                <li><a href="menu.html">Menú</a></li>
-                <li><a href="Empresa.html">Empresa</a></li>
-                <li><a href="Surcursal.html">Surcursal</a></li>
-                <li><a href="Empleados.html">Empleados</a></li>
-                <li><a href="Servicios.html">Servicios</a></li>
+            <li><a href="menu.php">Menú</a></li>
+                <li><a href="Empresa.php">Empresa</a></li>
+                <li><a href="Surcursal.php">Surcursal</a></li>
+                <li><a href="Empleados.php">Empleados</a></li>
+                <li><a href="Servicios.php">Servicios</a></li>
             </ul>
         </div>
     </header>
@@ -34,30 +52,36 @@
     <div class="tabla" style="margin-left: 26; width: 100%;">
         <h3>Lista de servicios registradas</h3>
         <table class="usuario" style="margin-left: 0;">
-            <th>Nombre de serie</th>
-            <th>Solicitud</th>
-            <th>Empresa responsable</th>
-            <th>Servicio</th>
+            <th>Numero de serie</th>
+            <th>Id empresa responsable</th>
             <th>Fecha de ingreso</th>
             <th>Fecha de entrega</th>
             <th>Observaciones</th>
-            <th>Nombre tecnico</th>
+            <th>Cedula tecnico encargado</th>
             <th>Diagnostico</th>
             <th>Editar servicio</th>
+            <?php
+                foreach($servicios as $dato){
+                    foreach($equipos as $dato1){
+            ?>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><?php echo $dato1->NumeroSerie?></td>
+                <td><?php echo $dato1->IdSurcursal?></td>
+                <td><?php echo $dato->FechaIngreso?></td>
+                <td><?php echo $dato->FechaSalida?></td>
+                <td><?php echo $dato->Observaciones?></td>
+                <td><?php echo $dato->CedulaEmpleado?></td>
+                <td><?php echo $dato->Diagonostico?></td>
                 <td>
-                    <a href="" class="boton-actualizar"></a>
+                    <a href="actualizarEquipos.php?id=<?php echo $dato1->NumeroSerie;?>" style="text-decoration:none; color:black" class="boton-actualizar">Equipos</a>
+                    <br><br>
+                    <a href="actualizarServicios.php?id=<?php echo $dato->idMantenimientos;?>" style="text-decoration:none; color:black" class="boton-actualizar">Servicio</a>
                 </td>
             </tr>
+                <?php 
+                    } 
+                } 
+                ?>
         </table>
         <br><br>
     </div>

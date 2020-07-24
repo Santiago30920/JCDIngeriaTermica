@@ -35,11 +35,11 @@ $estado="Administrador";
         <img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar">
         <div class="menu">
             <ul class="nav">
-                <li><a href="menu.html">Menú</a></li>
-                <li><a href="Empresa.html">Empresa</a></li>
-                <li><a href="Surcursal.html">Surcursal</a></li>
-                <li><a href="Empleados.html">Empleados</a></li>
-                <li><a href="Servicios.html">Servicios</a></li>
+            <li><a href="menu.php">Menú</a></li>
+                <li><a href="Empresa.php">Empresa</a></li>
+                <li><a href="Surcursal.php">Surcursal</a></li>
+                <li><a href="Empleados.php">Empleados</a></li>
+                <li><a href="Servicios.php">Servicios</a></li>
             </ul>
         </div>
     </header>

@@ -1,15 +1,34 @@
+<?php
+session_start();
+if (!isset($_SESSION['Cedula'])) {
+    header('Location:../login.php');
+}elseif(isset($_SESSION['Cedula'])){
+    include '../Conexion/Conexion.php';
+    $sentencia = $bd->query('SELECT * FROM mantenimientos');
+    $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    $sentencia1 = $bd->query('SELECT * FROM equipos');
+    $equipos = $sentencia1->fetchAll(PDO::FETCH_OBJ);
+}else{
+    echo '<script type="text/javascript">
+    alert("error en el sistema");
+    window.location.href="../login.php";
+    </script>';
+}
+$estado="Administrador";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Correctivo</title>
+    <title>Prevntivo</title>
     <link rel="icon" href="../style/log/Logo.png">
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
     <link rel="stylesheet" href="../style/css/header-menu.css">
     <link rel="stylesheet" href="../style/css/registrar.css">
+    <link rel="stylesheet" href="../style/css/ServiciosR.css">
 </head>
 
 <body>
@@ -19,9 +38,29 @@
         <img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar">
     </header>
     <div class="registro">
-        <h2>Correctivo</h2>
-        <form action="#" class="Registrar" method="POST">
-            <input type="text" name="txtNombre" class="Nombre" placeholder="Nombre surcursal" required>
+        <h2>Preventivo</h2>
+        <form action="../Dao/Preventivo.php" class="Registrar" method="POST">
+        <select name="txtMant" id="mant" class="Rol-50">
+        <?php foreach($empleado as $dato){
+            foreach($equipos as $dato1){?>
+            <option value="<?php echo $dato->idMantenimientos?>"><?php echo $dato1->NombreEquipos?></option>
+                <?php } 
+            }?>
+            </select>
+            <select name="txtMeses" id="meses" class="Rol-50">
+                <option value="1">1 mes</option>
+                <option value="2">2 mes</option>
+                <option value="3">3 mes</option>
+                <option value="4">4 mes</option>
+                <option value="1">5 mes</option>
+                <option value="6">6 mes</option>
+                <option value="7">7 mes</option>
+                <option value="8">8 mes</option>
+                <option value="9">9 mes</option>
+                <option value="10">10 mes</option>
+                <option value="11">11 mes</option>
+                <option value="21">12mes</option>
+            </select>
             <input type="text" name="txtOrden" class="Nombre" placeholder="Orden de servicio" required>
             <input type="text" name="txtSolicitud" class="Nombre" placeholder="Solicitud" required>
             <br>
