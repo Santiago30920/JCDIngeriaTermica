@@ -18,7 +18,7 @@ if($resultado1 === TRUE){
     </script>';
 }else{
     echo '<script type="text/javascript">
-    alert("email ya esta registrado intente nuevamente");
+    alert("Erorr al regustar servicio");
     window.location.href="../views/Servicios.php";
     </script>';
 }

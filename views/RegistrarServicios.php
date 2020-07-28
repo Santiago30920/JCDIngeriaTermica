@@ -6,8 +6,6 @@ if (!isset($_SESSION['Cedula'])) {
     include '../Conexion/Conexion.php';
     $sentencia = $bd->query('SELECT * FROM equipos');
     $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
-    $sentencia = $bd->query('SELECT * FROM mantenimientos');
-    $servicio= $sentencia->fetchAll(PDO::FETCH_OBJ);
     $sentencia = $bd->query('SELECT * FROM sucursal');
     $surcursal = $sentencia->fetchAll(PDO::FETCH_OBJ);
     $sentencia = $bd->query('SELECT * FROM empleados');
@@ -58,8 +56,9 @@ $estado="Administrador";
             <input type="text" name="txtVoltaje"  style="margin-right: 11%;" class="Nombre-50" placeholder="Voltaje">
             <input type="text" name="txtModelo" style="margin-left: -2%;" class="Nombre-50" placeholder="Modelo">
             <select name="txtGas" id="gas" class="Rol-50">
-                <option value="P">P</option>
-                <option value="N">N</option>
+                <option value="Propano">Propano</option>
+                <option value="Natural">Natural</option>
+                <option value="Ninguno">Ninguno</option>
             </select>
             <select name="txtNombreE" id="gas" class="Rol-50">
             <option value="">Seleccione nombre responsable</option>

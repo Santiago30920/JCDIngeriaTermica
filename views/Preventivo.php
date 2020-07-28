@@ -4,8 +4,6 @@ if (!isset($_SESSION['Cedula'])) {
     header('Location:../login.php');
 }elseif(isset($_SESSION['Cedula'])){
     include '../Conexion/Conexion.php';
-    $sentencia = $bd->query('SELECT * FROM mantenimientos');
-    $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
     $sentencia1 = $bd->query('SELECT * FROM equipos');
     $equipos = $sentencia1->fetchAll(PDO::FETCH_OBJ);
 }else{
@@ -40,14 +38,14 @@ $estado="Administrador";
     <div class="registro">
         <h2>Preventivo</h2>
         <form action="../Dao/Preventivo.php" class="Registrar" method="POST">
-        <select name="txtMant" id="mant" class="Rol-50">
-        <?php foreach($empleado as $dato){
-            foreach($equipos as $dato1){?>
-            <option value="<?php echo $dato->idMantenimientos?>"><?php echo $dato1->NombreEquipos?></option>
+        <select name="txtMant" id="mant" class="Rol-50" style="width:84%">
+        <?php
+            foreach($equipos as $dato){?>
+            <option value="<?php echo $dato->idMantenimientos?>"><?php echo $dato->NombreEquipos?></option>
                 <?php } 
-            }?>
+            ?>
             </select>
-            <select name="txtMeses" id="meses" class="Rol-50">
+            <select name="txtMeses" id="meses" style="width:84%" class="Rol-50">
                 <option value="1">1 mes</option>
                 <option value="2">2 mes</option>
                 <option value="3">3 mes</option>

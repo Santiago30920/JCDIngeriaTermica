@@ -25,7 +25,7 @@
             <input type="password" name="txtPassword" class="contenedor" placeholder="Ingrese contraseña" required>
             <br>
             <input type="submit" class="Aceptar" value="Ingresar">
-            <a href="../index.html" class="Cancelar">Cancelar</a>
+            <a href="https://www.jcdingenieriatermica.com/" class="Cancelar">Cancelar</a>
             <br>
             <a href="#" class="olvide">¿Has olvidado tu contraseña?</a>
             <br><br><br>

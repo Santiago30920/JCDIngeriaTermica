@@ -26,13 +26,13 @@
     margin-bottom: 3%;
     margin-left: 1%;
     border: none;
-    background-color: greenyellow;
+    background-color: #118607;
     color: white;
 }
 .inicio .Aceptar:hover{
     background-color: white;
-    color: greenyellow;
-    border: 1px solid greenyellow;
+    color: #118607;
+    border: 1px solid #118607;
 }
 .Cancelar{
     margin-left: -83%;

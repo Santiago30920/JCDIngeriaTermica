@@ -61,7 +61,7 @@
     padding-bottom: 15px;
     padding-right: 20px;
     padding-left: 20px;
-    background-color: #31ff1e;
+    background-color: #118607;
     color: white;
     margin-left: 1%;
     font-size: 17px;
@@ -76,8 +76,8 @@
 }
 .registro .aceptar:hover{
     background-color: white;
-    border: 1px solid #31ff1e;
-    color: #31ff1e;
+    border: 1px solid #118607;
+    color: #118607;
 }
 .Cancelar:hover{
     background-color: white;
@@ -86,13 +86,13 @@
 }
 .actualizar{
     border: none;
-    background-color: #e6d92a;
+    background-color: #9b003b;
     color: white;
     padding: 15px 20px 15px 20px;
     margin-bottom: 1.5%;
 }
 .actualizar:hover{
-    border: 1px solid #e6d92a;
-    color: #e6d92a;
+    border: 1px solid #9b003b;
+    color: #9b003b;
     background-color: white;
 }

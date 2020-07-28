@@ -110,11 +110,11 @@ tr:nth-child(even){
     padding-bottom: 15px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: rgb(116, 116, 116);
+    background-color: #575757;
     color: #ffffff;
 }
 .Barra_de_busqueda > button:hover{
     background-color: #ffffff;
-    border: 1px solid rgb(116, 116, 116);
-    color: rgb(116, 116, 116);
+    border: 1px solid #575757;
+    color: #575757;
 }

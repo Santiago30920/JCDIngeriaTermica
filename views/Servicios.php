@@ -4,10 +4,8 @@ if (!isset($_SESSION['Cedula'])) {
     header('Location:../login.php');
 }elseif(isset($_SESSION['Cedula'])){
     include '../Conexion/Conexion.php';
-    $sentencia = $bd->query('SELECT * FROM mantenimientos');
-    $sentencia1 = $bd->query('SELECT * FROM equipos');
-    $servicios = $sentencia->fetchAll(PDO::FETCH_OBJ);
-    $equipos = $sentencia1->fetchAll(PDO::FETCH_OBJ);
+    $sentencia = $bd->query('SELECT * FROM equipos');
+    $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
 }else{
     echo '<script type="text/javascript">
     alert("error en el sistema");
@@ -45,11 +43,11 @@ $estado="Administrador";
     <div class="Barra_de_busqueda">
         <input type="text" placeholder="Busqueda" class="busqueda">
         <input type="submit" value="Buscar" class="buscar">
-        <a href="../views/RegistrarServicios.html">Registro</a>
+        <a href="../views/RegistrarServicios.php">Registro</a>
         <button>Inactivos</button>
         <button>Activos</button>
     </div>
-    <div class="tabla" style="margin-left: 26; width: 100%;">
+    <div class="tabla" style="margin-left: 26; width: 150%;">
         <h3>Lista de servicios registradas</h3>
         <table class="usuario" style="margin-left: 0;">
             <th>Numero de serie</th>
@@ -61,26 +59,24 @@ $estado="Administrador";
             <th>Diagnostico</th>
             <th>Editar servicio</th>
             <?php
-                foreach($servicios as $dato){
-                    foreach($equipos as $dato1){
+                    foreach($equipos as $dato){
             ?>
             <tr>
-                <td><?php echo $dato1->NumeroSerie?></td>
-                <td><?php echo $dato1->IdSurcursal?></td>
+                <td><?php echo $dato->NumeroSerie?></td>
+                <td><?php echo $dato->IdSurcursal?></td>
                 <td><?php echo $dato->FechaIngreso?></td>
                 <td><?php echo $dato->FechaSalida?></td>
-                <td><?php echo $dato->Observaciones?></td>
+                <td><?php echo $dato->Obesrvaciones?></td>
                 <td><?php echo $dato->CedulaEmpleado?></td>
-                <td><?php echo $dato->Diagonostico?></td>
+                <td><?php echo $dato->Diagnostico?></td>
                 <td>
-                    <a href="actualizarEquipos.php?id=<?php echo $dato1->NumeroSerie;?>" style="text-decoration:none; color:black" class="boton-actualizar">Equipos</a>
+                    <a href="actualizarEquipos.php?id=<?php echo $dato->NumeroSerie;?>" style="text-decoration:none; color:black" class="boton-actualizar">Equipos</a>
                     <br><br>
                     <a href="actualizarServicios.php?id=<?php echo $dato->idMantenimientos;?>" style="text-decoration:none; color:black" class="boton-actualizar">Servicio</a>
                 </td>
             </tr>
                 <?php 
                     } 
-                } 
                 ?>
         </table>
         <br><br>
