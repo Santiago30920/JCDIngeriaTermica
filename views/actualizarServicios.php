@@ -5,7 +5,7 @@ if (!isset($_SESSION['Cedula'])) {
 }elseif(isset($_SESSION['Cedula'])){
     include '../Conexion/Conexion.php';
     $id = $_GET['id'];
-    $setencia = $bd->prepare("SELECT * FROM mantenimientos WHERE idMantenimientos = ?");
+    $setencia = $bd->prepare("SELECT * FROM equipos WHERE idEquipos = ?");
     $resultado = $setencia->execute([$id]);
     $empresa = $setencia->fetch(PDO::FETCH_OBJ);
 }else{
@@ -48,7 +48,7 @@ $estado="Administrador";
     </header>
     <div class="registro">
             <br>
-            <h2>Registro de Mantenimientos</h2>
+            <h2>Editar de servicios</h2>
             <br><br>
             <form action="../Dao/editarServicios.php" class="Registrar" method="POST">
             <label class="especificacion" style="margin-left: -0%;">Fecha de ingreso:</label>
@@ -60,12 +60,12 @@ $estado="Administrador";
                 <option value="En espera">En espera</option>
                 <option value="Resuelto">Resuelto</option>
             </select>
-            <textarea name="txtObservaciones" id="" cols="165" rows="5" placeholder="Observaciones"><?php echo $empresa->Observaciones?></textarea>
+            <textarea name="txtObservaciones" id="" cols="165" rows="5" placeholder="Observaciones"><?php echo $empresa->Obesrvaciones?></textarea>
             <input type="hidden" name="oculto">
-            <input type="hidden" name="id3" value="<?php echo $empresa->idMantenimientos;?>">
+            <input type="hidden" name="id2" value="<?php echo $empresa->idEquipos;?>">
             <br>
             <input type="submit" class="actualizar" value="Actualizar">
-            <a href="../views/Surcursal.html" class="Cancelar">Cancelar</a>
+            <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>
             <br><br>
         </form>
     </div>

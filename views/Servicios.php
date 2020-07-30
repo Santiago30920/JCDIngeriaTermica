@@ -20,6 +20,7 @@ $estado="Administrador";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servicios</title>
+    <link rel="icon" href="../style/log/Logo.png">
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
     <link rel="stylesheet" href="../style/css/header-menu.css">
@@ -70,9 +71,9 @@ $estado="Administrador";
                 <td><?php echo $dato->CedulaEmpleado?></td>
                 <td><?php echo $dato->Diagnostico?></td>
                 <td>
-                    <a href="actualizarEquipos.php?id=<?php echo $dato->NumeroSerie;?>" style="text-decoration:none; color:black" class="boton-actualizar">Equipos</a>
+                    <a href="actualizarEquipos.php?id=<?php echo $dato->idEquipos;?>" style="text-decoration:none; color:black" class="boton-actualizar">Equipos</a>
                     <br><br>
-                    <a href="actualizarServicios.php?id=<?php echo $dato->idMantenimientos;?>" style="text-decoration:none; color:black" class="boton-actualizar">Servicio</a>
+                    <a href="actualizarServicios.php?id=<?php echo $dato->idEquipos;?>" style="text-decoration:none; color:black" class="boton-actualizar">Servicio</a>
                 </td>
             </tr>
                 <?php 

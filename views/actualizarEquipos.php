@@ -5,7 +5,7 @@ if (!isset($_SESSION['Cedula'])) {
 }elseif(isset($_SESSION['Cedula'])){
     include '../Conexion/Conexion.php';
     $id = $_GET['id'];
-    $setencia = $bd->prepare("SELECT * FROM equipos WHERE NumeroSerie = ?");
+    $setencia = $bd->prepare("SELECT * FROM equipos WHERE idEquipos = ?");
     $resultado = $setencia->execute([$id]);
     $empresa = $setencia->fetch(PDO::FETCH_OBJ);
 
@@ -57,7 +57,7 @@ $estado="Administrador";
             <input type="text" name="txtVoltaje"  style="margin-right: 11%;" value="<?php echo $empresa->Voltaje?>" class="Nombre-50" placeholder="Voltaje">
             <input type="text" name="txtModelo" style="margin-left: -2%;" value="<?php echo $empresa->Modelo?>" class="Nombre-50" placeholder="Modelo">
             <select name="txtNombreE" id="gas" class="Rol-50">
-            <option value="">Seleccione nombre responsable</option>
+            <option value="<?php echo $empresa->CedulaEmpleado?>"> <?php echo $empresa->CedulaEmpleado?></option>
                 <?php 
                     foreach($empleado as $dato1){
                 ?>
@@ -68,18 +68,18 @@ $estado="Administrador";
             </select>
             <select name="txtGas" id="gas" class="Rol-50">
                 <option  value="<?php echo $empresa->TipoGas?>"><?php echo $empresa->TipoGas?></option>
-                <option value="P">P</option>
-                <option value="N">N</option>
+                <option value="Propanao">Propano</option>
+                <option value="Natural">Natural</option>
+                <option value="Ninguno">Ninguno</option>
             </select>
             <input type="text" name="txtMarca" value="<?php echo $empresa->Marca?>" style="margin-right: 11%;" class="Nombre-50" placeholder="Marca">
-            <input type="number" name="txtSerial" value="<?php echo $empresa->NumeroSerie?>" style="margin-left: -2%;" class="Nombre-50" placeholder="Numero de serie" disabled>
+            <input type="number" name="txtSerial" value="<?php echo $empresa->NumeroSerie?>" style="margin-left: -2%;" class="Nombre-50" placeholder="Numero de serie">
             <input type="text" name="txtCapacidad" class="Nombre" value="<?php echo $empresa->Capacidad?>" style="width: 84.5%;" placeholder="Capacidad">
             <br>
-            <textarea name="txtDescripcion" class="Descripcion" id="Descripcion" cols="165" rows="5"
-            placeholder="Ingrese una descripcion"><?php echo $empresa->Descripcion?></textarea>
+            <textarea name="txtDescripcion" class="Descripcion" id="Descripcion" cols="165" rows="5" placeholder="Ingrese una descripcion"><?php echo $empresa->Descripcion?></textarea>
             <br><br>
             <input type="hidden" name="oculto">
-            <input type="hidden" name="id2" value="<?php echo $empresa->NumeroSerie;?>">
+            <input type="hidden" name="id2" value="<?php echo $empresa->idEquipos;?>">
             <input type="submit" class="actualizar" value="Actualizar">
             <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>
             <br><br>

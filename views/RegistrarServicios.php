@@ -102,7 +102,7 @@ $estado="Administrador";
             <textarea name="txtObservaciones" id="Observaciones" cols="165" rows="5" placeholder="Observaciones"></textarea>
             <br>
             <input type="submit" class="aceptar" value="Registrar">
-            <a href="../views/Surcursal.html" class="Cancelar">Cancelar</a>
+            <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>
             <br><br>
         </form>
     </div>
