@@ -59,6 +59,7 @@ $estado="Administrador";
             <th>Cedula tecnico encargado</th>
             <th>Diagnostico</th>
             <th>Editar servicio</th>
+            <th>Reporte</th>
             <?php
                     foreach($equipos as $dato){
             ?>
@@ -74,6 +75,9 @@ $estado="Administrador";
                     <a href="actualizarEquipos.php?id=<?php echo $dato->idEquipos;?>" style="text-decoration:none; color:black" class="boton-actualizar">Equipos</a>
                     <br><br>
                     <a href="actualizarServicios.php?id=<?php echo $dato->idEquipos;?>" style="text-decoration:none; color:black" class="boton-actualizar">Servicio</a>
+                </td>
+                <td>
+                    <a href="../pdf/reporte.php?id=<?php echo $dato->idEquipos;?>&id2=<?php echo $dato->IdSurcursal?>&id3=<?php echo $dato->CedulaEmpleado?>" style="text-decoration:none; color:black" class="boton-actualizar" target="_blank">reporte</a>
                 </td>
             </tr>
                 <?php 
