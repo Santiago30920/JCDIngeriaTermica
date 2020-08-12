@@ -4,8 +4,6 @@ if (!isset($_SESSION['Cedula'])) {
     header('Location:../login.php');
 }elseif(isset($_SESSION['Cedula'])){
     include '../Conexion/Conexion.php';
-    $sentencia = $bd->query('SELECT * FROM mantenimientos');
-    $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
     $sentencia1 = $bd->query('SELECT * FROM equipos');
     $equipos = $sentencia1->fetchAll(PDO::FETCH_OBJ);
 }else{
@@ -28,6 +26,7 @@ $estado="Administrador";
     <link rel="stylesheet" href="../style/css/footer.css">
     <link rel="stylesheet" href="../style/css/header-menu.css">
     <link rel="stylesheet" href="../style/css/registrar.css">
+    <link rel="stylesheet" href="../style/css/ServiciosR.css">
 </head>
 
 <body>
@@ -39,12 +38,12 @@ $estado="Administrador";
     <div class="registro">
         <h2>Correctivo</h2>
         <form action="../Dao/Correctivo.php" class="Registrar" method="POST">
-        <select name="txtMant" id="mant" class="Rol-50">
-        <?php foreach($empleado as $dato){
-            foreach($equipos as $dato1){?>
-            <option value="<?php echo $dato->idMantenimientos?>"><?php echo $dato1->NombreEquipos?></option>
-                <?php } 
-            }?>
+        <select name="txtMant" id="mant" class="Rol-50" style="width: 85%">
+        <?php foreach($equipos as $dato1){?>
+            <option value="<?php echo $dato1->idEquipos?>"><?php echo $dato1->NombreEquipos?></option>
+                <?php 
+                } 
+            ?>
             </select>
             <input type="text" name="txtOrden" class="Nombre" placeholder="Orden de servicio" required>
             <input type="text" name="txtSolicitud" class="Nombre" placeholder="Solicitud" required>
