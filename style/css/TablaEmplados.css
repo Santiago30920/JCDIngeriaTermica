@@ -5,7 +5,7 @@
 }
 .tabla{
     margin-left: 25%;
-    max-width: 50%;
+    max-width: 57%;
     text-align: center;
     border: 2px solid #ddd;
     border-radius: 40px;
@@ -70,6 +70,7 @@ tr:nth-child(even){
     margin-bottom: 20px;
 }
 .Barra_de_busqueda .busqueda{
+    border: 2px solid #ddd;
     padding-top: 15px;
     padding-bottom: 15px;
     border-radius: 20px;
@@ -80,8 +81,8 @@ tr:nth-child(even){
     border: none;
     background-color: #ff3232;
     color: white;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 16px;
+    padding-bottom: 14px;
     padding-right: 20px;
     padding-left: 20px;
 }
@@ -90,7 +91,7 @@ tr:nth-child(even){
     border: 1px solid  #ff3232;
     color:  #ff3232;
 }
-.Barra_de_busqueda > a{
+.Barra_de_busqueda .RegistroU{
     text-decoration: none;
     color: white;
     background-color: #575757;
@@ -99,12 +100,12 @@ tr:nth-child(even){
     padding-right: 20px;
     padding-left: 20px;
 }
-.Barra_de_busqueda > a:hover{
+.Barra_de_busqueda  .RegistroU:hover{
     background-color: white;
     border: 1px solid #575757;
     color: #575757;
 }
-.Barra_de_busqueda > button{
+.Barra_de_busqueda  .Inactivos{
     border: none;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -113,7 +114,7 @@ tr:nth-child(even){
     background-color: #575757;
     color: #ffffff;
 }
-.Barra_de_busqueda > button:hover{
+.Barra_de_busqueda  .Inactivos:hover{
     background-color: #ffffff;
     border: 1px solid #575757;
     color: #575757;

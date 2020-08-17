@@ -4,7 +4,26 @@ if (!isset($_SESSION['Cedula'])) {
     header('Location:../login.php');
 }elseif(isset($_SESSION['Cedula'])){
     include '../Conexion/Conexion.php';
-    $sentencia = $bd->query('SELECT * FROM empleados');
+    $busqueda = strtolower($_REQUEST['busqueda']);
+    if(empty($busqueda)){
+        header("location: Empleados.php");
+    }elseif($busqueda == 'activo'){
+        $sentencia = $bd->query("SELECT * FROM `empleados` WHERE(Nombre LIKE '%$busqueda%' OR 
+        Apellidos LIKE '$busqueda' OR 
+        Cedula LIKE '$busqueda' OR 
+        Email LIKE '$busqueda' OR 
+        Telefono LIKE '$busqueda' OR 
+        Rol LIKE '$busqueda' OR 
+        Estado LIKE '$busqueda%')");
+    }else{
+    $sentencia = $bd->query("SELECT * FROM `empleados` WHERE(Nombre LIKE '%$busqueda%' OR 
+        Apellidos LIKE '%$busqueda%' OR 
+        Cedula LIKE '%$busqueda%' OR 
+        Email LIKE '%$busqueda%' OR 
+        Telefono LIKE '%$busqueda%' OR 
+        Rol LIKE '%$busqueda%' OR 
+        Estado LIKE '%$busqueda%')");
+    }
     $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
 }else{
     echo '<script type="text/javascript">
@@ -44,11 +63,11 @@ $estado="Administrador";
         </div>
     </header>
     <div class="Barra_de_busqueda">
-        <form action="buscar_Empleados.php" method="GET">
-            <input type="text" name="busqueda" id="busqueda" placeholder="Busqueda" class="busqueda">
+        <form action="buscar_empleados.php" method="GET">
+            <input type="text" name="busqueda" id="busqueda" placeholder="Busqueda" class="busqueda" value="<?php echo $busqueda?>">
             <input type="submit" value="Buscar" class="buscar">
             <a href="registrarEmpleado.php" class="RegistroU">Registro</a>
-            <button class="Inactivos" name="busqueda" value="Inacitvo">Inactivos</button>
+            <button class="Inactivos" name="busqueda" value="Inactivo">Inactivos</button>
             <button class="Inactivos" name="busqueda" value="Activo">Activos</button>
         </form>
     </div>
