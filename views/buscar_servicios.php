@@ -4,7 +4,28 @@ if (!isset($_SESSION['Cedula'])) {
     header('Location:../login.php');
 }elseif(isset($_SESSION['Cedula'])){
     include '../Conexion/Conexion.php';
-    $sentencia = $bd->query('SELECT * FROM equipos');
+    $busqueda = strtolower($_REQUEST['busqueda']);
+    if(empty($busqueda)){
+        header("location: Servicios.php");
+    }elseif($busqueda == 'En_espera'){
+        $sentencia = $bd->query("SELECT * FROM `equipos` WHERE(NumeroSerie LIKE '%$busqueda%' OR 
+        IdSurcursal LIKE '$busqueda' OR 
+        FechaIngreso LIKE '$busqueda' OR 
+        FechaSalida LIKE '$busqueda' OR 
+        Obesrvaciones LIKE '$busqueda' OR 
+        CedulaEmpleado LIKE '$busqueda' OR
+        Diagnostico LIKE '$busqueda' OR
+        Estado LIKE '$busqueda%')");
+    }else{
+    $sentencia = $bd->query("SELECT * FROM `equipos` WHERE(NumeroSerie LIKE '%$busqueda%' OR 
+        IdSurcursal LIKE '%$busqueda%' OR 
+        FechaIngreso LIKE '%$busqueda%' OR 
+        FechaSalida LIKE '%$busqueda%' OR 
+        Obesrvaciones LIKE '%$busqueda%' OR 
+        CedulaEmpleado LIKE '%$busqueda%' OR 
+        Diagnostico LIKE '%$busqueda%' OR 
+        Estado LIKE '%$busqueda%')");
+    }
     $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
 }else{
     echo '<script type="text/javascript">

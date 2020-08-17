@@ -44,11 +44,13 @@ $estado="Administrador";
         </div>
     </header>
     <div class="Barra_de_busqueda">
-        <input type="text" placeholder="Busqueda" class="busqueda">
-        <input type="submit" value="Buscar" class="buscar">
-        <a href="../views/RegistrarSurcursal.html">Registro</a>
-        <button>Inactivos</button>
-        <button>Activos</button>
+    <form action="buscar_surcursal.php" method="GET">
+            <input type="text" name="busqueda" id="busqueda" placeholder="Busqueda" class="busqueda">
+            <input type="submit" value="Buscar" class="buscar">
+            <a href="registrarEmpresa.php" class="RegistroU">Registro</a>
+            <button class="Inactivos" name="busqueda" value="Inactivo">Inactivos</button>
+            <button class="Inactivos" name="busqueda" value="Activo">Activos</button>
+        </form>
     </div>
     <div class="tabla" style="width: 45%; margin-left: 28%;">
         <h3>Lista de surcursales registradas</h3>
@@ -57,6 +59,7 @@ $estado="Administrador";
             <th>Nombre de la surcursal</th>
             <th>Telefono</th>
             <th>Nit de empresa</th>
+            <th>Direccion</th>
             <th>Estado</th>
             <th>Acciones</th>
             <?php
@@ -67,6 +70,7 @@ $estado="Administrador";
                 <td><?php echo $dato->NombreSucursal?></td>
                 <td><?php echo $dato->Telefono?></td>
                 <td><?php echo $dato->NitEmpresa?></td>
+                <td><?php echo $dato->Direccion?></td>
                 <td><?php echo $dato->Estado?></td>
                 <td>
                     <a href="ActualizarSurcursal.php?id=<?php echo $dato->idSucursal;?>" class="boton-actualizar" style="text-decoration:none; color:black">Editar</a>

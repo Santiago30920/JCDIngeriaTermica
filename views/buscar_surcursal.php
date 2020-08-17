@@ -4,10 +4,23 @@ if (!isset($_SESSION['Cedula'])) {
     header('Location:../login.php');
 }elseif(isset($_SESSION['Cedula'])){
     include '../Conexion/Conexion.php';
-    $id = $_GET['id'];
-    $setencia = $bd->prepare("SELECT * FROM sucursal WHERE idSucursal = ?");
-    $resultado = $setencia->execute([$id]);
-    $empleado = $setencia->fetch(PDO::FETCH_OBJ);
+    $busqueda = strtolower($_REQUEST['busqueda']);
+    if(empty($busqueda)){
+        header("location: Surcursal.php");
+    }elseif($busqueda == 'activo'){
+        $sentencia = $bd->query("SELECT * FROM `sucursal` WHERE(idSucursal LIKE '%$busqueda%' OR 
+        NombreSucursal LIKE '$busqueda' OR 
+        Telefono LIKE '$busqueda' OR 
+        Direccion LIKE '$busqueda' OR 
+        Estado LIKE '$busqueda%')");
+    }else{
+    $sentencia = $bd->query("SELECT * FROM `sucursal` WHERE(idSucursal LIKE '%$busqueda%' OR 
+        NombreSucursal LIKE '%$busqueda%' OR 
+        Telefono LIKE '%$busqueda%' OR 
+        Direccion LIKE '%$busqueda%' OR 
+        Estado LIKE '%$busqueda%')");
+    }
+    $surcursal = $sentencia->fetchAll(PDO::FETCH_OBJ);
 }else{
     echo '<script type="text/javascript">
     alert("error en el sistema");
@@ -22,12 +35,12 @@ $estado="Administrador";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registar empresa</title>
+    <title>Surcursal</title>
     <link rel="icon" href="../style/log/Logo.png">
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
     <link rel="stylesheet" href="../style/css/header-menu.css">
-    <link rel="stylesheet" href="../style/css/registrar.css">
+    <link rel="stylesheet" href="../style/css/TablaEmplados.css">
 </head>
 
 <body>
@@ -45,32 +58,51 @@ $estado="Administrador";
             </ul>
         </div>
     </header>
-    <div class="registro">
-        <h2>Actualizacion de surcursal</h2>
-        <form action="../Dao/editarSurcursal.php" class="Registrar" method="POST">
-            <input type="text" name="txtId" value="<?php echo $empleado->idSucursal?>" class="Cedula" placeholder="Ingrese el id" required disabled>
-            <input type="text" name="txtNombre" value="<?php echo $empleado->NombreSucursal?>" class="Nombre" placeholder="Ingrese nombre surcursal" required>
-            <input type="number" name="txtTelefono" class="Cedula" value="<?php echo $empleado->Telefono?>" placeholder="Ingrese telefono" required>
-            <input type="txt" name="txtDireccion" class="Cedula" value="<?php echo $empleado->Direccion?>" placeholder="Ingrese Direccion" required>
-            <select name="txtEstado" id="Estado" class="Rol" required>
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>
-            </select>
-            <input type="hidden" name="oculto">
-            <input type="hidden" name="id2" value="<?php echo $empleado->idSucursal; ?>">
-            <br>
-            <input type="submit" class="actualizar" value="Actualizar">
-            <a href="../views/Surcursal.html" class="Cancelar">Cancelar</a>
-            <br><br>
+    <div class="Barra_de_busqueda">
+    <form action="buscar_surcursal.php" method="GET">
+            <input type="text" name="busqueda" id="busqueda" placeholder="Busqueda" class="busqueda" value="<?php echo $busqueda?>">
+            <input type="submit" value="Buscar" class="buscar">
+            <a href="registrarEmpresa.php" class="RegistroU">Registro</a>
+            <button class="Inactivos" name="busqueda" value="Inactivo">Inactivos</button>
+            <button class="Inactivos" name="busqueda" value="Activo">Activos</button>
         </form>
+    </div>
+    <div class="tabla" style="width: 45%; margin-left: 28%;">
+        <h3>Lista de surcursales registradas</h3>
+        <table class="usuario" style="margin-left: 20%;">
+            <th>Surcursal No.</th>
+            <th>Nombre de la surcursal</th>
+            <th>Telefono</th>
+            <th>Nit de empresa</th>
+            <th>Direccion</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+            <?php
+                foreach($surcursal as $dato){
+            ?>
+            <tr>
+                <td><?php echo $dato->idSucursal?></td>
+                <td><?php echo $dato->NombreSucursal?></td>
+                <td><?php echo $dato->Telefono?></td>
+                <td><?php echo $dato->NitEmpresa?></td>
+                <td><?php echo $dato->Direccion?></td>
+                <td><?php echo $dato->Estado?></td>
+                <td>
+                    <a href="ActualizarSurcursal.php?id=<?php echo $dato->idSucursal;?>" class="boton-actualizar" style="text-decoration:none; color:black">Editar</a>
+                </td>
+            </tr>
+            <?php
+                }
+            ?>
+        </table>
     </div>
     <footer>
         <div class="contactos">
-            <img src="../style/log/telefono1.png" alt="telefono">
+            <img src="../style/log/telefono1.png" alt="telefo">
             <a href="#">Equipos: 311 8518533</a>
-            <img src="../style/log/telefono1.png" alt="telefono">
+            <img src="../style/log/telefono1.png" alt="telefo">
             <a href="#">Equipos: 321 9144584</a>
-            <img src="../style/log/telefono1.png" alt="telefono">
+            <img src="../style/log/telefono1.png" alt="telefo">
             <a href="#">Equipos: 310 2529091</a>
         </div>
         <p>

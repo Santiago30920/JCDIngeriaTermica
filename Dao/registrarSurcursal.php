@@ -3,10 +3,11 @@
 
     $nombre = $_POST['txtNombre'];
     $telefono = $_POST['txtTelefono'];
+    $direccion = $_POST['txtDireccion'];
     $nit = $_POST['txtNit'];
 
-    $sentencia = $bd->prepare("INSERT INTO sucursal VALUES(?,?,?,?,?)");
-    $resultado = $sentencia->execute(['',$nombre, $telefono, 'Activo', $nit]);
+    $sentencia = $bd->prepare("INSERT INTO sucursal VALUES(?,?,?,?,?,?)");
+    $resultado = $sentencia->execute(['',$nombre, $telefono, $direccion, 'Activo', $nit]);
     if($resultado === true){
         echo '<script type="text/javascript">
         alert("Registro exitoso");

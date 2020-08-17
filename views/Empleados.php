@@ -48,7 +48,7 @@ $estado="Administrador";
             <input type="text" name="busqueda" id="busqueda" placeholder="Busqueda" class="busqueda">
             <input type="submit" value="Buscar" class="buscar">
             <a href="registrarEmpleado.php" class="RegistroU">Registro</a>
-            <button class="Inactivos" name="busqueda" value="Inacitvo">Inactivos</button>
+            <button class="Inactivos" name="busqueda" value="Inactivo">Inactivos</button>
             <button class="Inactivos" name="busqueda" value="Activo">Activos</button>
         </form>
     </div>

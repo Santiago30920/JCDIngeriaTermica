@@ -44,11 +44,13 @@ $estado="Administrador";
         </div>
     </header>
     <div class="Barra_de_busqueda">
-        <input type="text" placeholder="Busqueda" class="busqueda">
-        <input type="submit" value="Buscar" class="buscar">
-        <a href="../views/RegistrarEmpresa.php">Registro</a>
-        <button>Inactivos</button>
-        <button>Activos</button>
+    <form action="buscar_Empresa.php" method="GET">
+            <input type="text" name="busqueda" id="busqueda" placeholder="Busqueda" class="busqueda">
+            <input type="submit" value="Buscar" class="buscar">
+            <a href="registrarEmpresa.php" class="RegistroU">Registro</a>
+            <button class="Inactivos" name="busqueda" value="Inactivo">Inactivos</button>
+            <button class="Inactivos" name="busqueda" value="Activo">Activos</button>
+        </form>
     </div>
     <div class="tabla" style="width: 45%; margin-left: 28%;">
         <h3>Lista de empresas registradas</h3>

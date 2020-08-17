@@ -6,10 +6,11 @@
     $id = $_POST['id2'];
     $nombre = $_POST['txtNombre'];
     $telefono = $_POST['txtTelefono'];
+    $direccion = $_POST['txtDireccion'];
     $estado = $_POST['txtEstado'];
     
-    $setencia = $bd->prepare("UPDATE sucursal SET NombreSucursal = ?, Telefono = ?, Estado = ? WHERE idSucursal = ?;");
-    $resultado = $setencia->execute([$nombre, $telefono, $estado, $id]);
+    $setencia = $bd->prepare("UPDATE sucursal SET NombreSucursal = ?, Telefono = ?, Direccion = ?, Estado = ? WHERE idSucursal = ?;");
+    $resultado = $setencia->execute([$nombre, $telefono, $direccion, $estado, $id]);
     if($resultado === TRUE){
         echo '<script type="text/javascript">
         alert("Se ha actualizado correctamente");
