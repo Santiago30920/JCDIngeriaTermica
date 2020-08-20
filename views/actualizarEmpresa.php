@@ -62,7 +62,7 @@ $estado="Administrador";
             <input type="hidden" name="id2" value="<?php echo $empresa->Nit;?>">
             <br>
             <input type="submit" class="actualizar" value="Actualizar">
-            <a href="../views/Empresa.html" class="Cancelar">Cancelar</a>
+            <a href="../views/Empresa.php" class="Cancelar">Cancelar</a>
             <br><br>
         </form>
     </div>

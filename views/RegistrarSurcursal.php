@@ -60,7 +60,7 @@ $estado="Administrador";
             </select>
             <br>
             <input type="submit" class="aceptar" value="Registrar">
-            <a href="../views/Surcursal.html" class="Cancelar">Cancelar</a>
+            <a href="../views/Surcursal.php" class="Cancelar">Cancelar</a>
             <br><br>
         </form>
     </div>

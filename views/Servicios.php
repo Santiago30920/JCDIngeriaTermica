@@ -45,7 +45,7 @@ $estado="Administrador";
     <form action="buscar_servicios.php" method="GET">
             <input type="text" name="busqueda" id="busqueda" placeholder="Busqueda" class="busqueda">
             <input type="submit" value="Buscar" class="buscar">
-            <a href="registrarEmpleado.php" class="RegistroU">Registro</a>
+            <a href="registrarServicios.php" class="RegistroU">Registro</a>
             <button class="Inactivos" name="busqueda" value="En_espera">En espera</button>
             <button class="Inactivos" name="busqueda" value="Terminados">Terminados</button>
         </form>

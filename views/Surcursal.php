@@ -47,14 +47,14 @@ $estado="Administrador";
     <form action="buscar_surcursal.php" method="GET">
             <input type="text" name="busqueda" id="busqueda" placeholder="Busqueda" class="busqueda">
             <input type="submit" value="Buscar" class="buscar">
-            <a href="registrarEmpresa.php" class="RegistroU">Registro</a>
+            <a href="registrarSurcursal.php" class="RegistroU">Registro</a>
             <button class="Inactivos" name="busqueda" value="Inactivo">Inactivos</button>
             <button class="Inactivos" name="busqueda" value="Activo">Activos</button>
         </form>
     </div>
     <div class="tabla" style="width: 45%; margin-left: 28%;">
         <h3>Lista de surcursales registradas</h3>
-        <table class="usuario" style="margin-left: 20%;">
+        <table class="usuario" style="margin-left: 4.5%;">
             <th>Surcursal No.</th>
             <th>Nombre de la surcursal</th>
             <th>Telefono</th>
@@ -80,6 +80,8 @@ $estado="Administrador";
                 }
             ?>
         </table>
+        <br>
+        <br>
     </div>
     <footer>
         <div class="contactos">
