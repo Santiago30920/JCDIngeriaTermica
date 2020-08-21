@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
     <link rel="stylesheet" href="../style/css/header-menu.css">
-    <link rel="stylesheet" href="../style/css/registrar.css">
+    <link rel="stylesheet" href="../style/css/Menu2.css">
 </head>
 
 <body>
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
         <img src="../style/log/login.png" alt="login" class="login">
-        <a href="../Dao/CerrarSession.php"><img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar"></a>
+        <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
         <div class="menu">
             <ul class="nav">
                 <li><a href="menu.php">Menú</a></li>
@@ -27,17 +27,18 @@
             </ul>
         </div>
     </header>
-    <div class="registro">
-        <h2>Editar contraseña</h2>
-        <form action="#" class="Registrar" method="POST">
-            <input type="password" name="txtContrasena" class="Cedula" placeholder="Ingrese nueva contraseña" required disabled>
-            <input type="password" name="txtConfirmed-pass" class="Cedula" placeholder="vuelva a ingresar la contraseña" required disabled>
-            <br>
-            <input type="submit" class="actualizar" value="Actualizar">
-            <a href="../views/Surcursal.html" class="Cancelar">Cancelar</a>
-            <br><br>
-        </form>
-    </div>
+    <a href="editarContrasena.php">
+        <div class="Password">
+            <img src="../style/log/contrasena.png" alt="contrasena">
+            <h3>Actualizar Contraseña</h3>
+        </div>
+    </a>
+    <a href="editarDatos.php">
+        <div class="Perfil">
+            <img src="../style/log/persona.png" alt="persona">
+            <h3>Actualizar Perfil</h3>
+        </div>
+    </a>
     <footer>
         <div class="contactos">
             <img src="../style/log/telefono1.png" alt="telefono">

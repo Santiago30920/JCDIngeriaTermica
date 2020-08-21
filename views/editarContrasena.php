@@ -1,10 +1,29 @@
+<?php
+session_start();
+if (!isset($_SESSION['Cedula'])) {
+    header('Location:../login.php');
+}elseif(isset($_SESSION['Cedula'])){
+    include '../Conexion/Conexion.php';
+    $id = $_SESSION['Cedula'];
+    $setencia = $bd->prepare("SELECT * FROM empleados WHERE Cedula = ?");
+    $resultado = $setencia->execute([$id]);
+    $empleado = $setencia->fetch(PDO::FETCH_OBJ);
+}else{
+    echo '<script type="text/javascript">
+    alert("error en el sistema");
+    window.location.href="../login.php";
+    </script>';
+}
+$estado="Administrador";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar datos</title>
+    <title>Editar contraseña</title>
+    
     <link rel="icon" href="../style/log/Logo.png">
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
@@ -16,7 +35,7 @@
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
         <img src="../style/log/login.png" alt="login" class="login">
-        <a href="../Dao/CerrarSession.php"><img src="../style/log/cerrar_sesion.png" class="Cerrar" alt="cerrar"></a>
+        <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
         <div class="menu">
             <ul class="nav">
                 <li><a href="menu.php">Menú</a></li>
@@ -28,15 +47,16 @@
         </div>
     </header>
     <div class="registro">
-        <h2>Editar usuario</h2>
-        <form action="#" class="Registrar" method="POST">
-            <input type="text" name="txtNombre" class="Nombre" placeholder="Ingrese nombre" required>
-            <input type="text" name="txtApellido" class="Nombre" placeholder="Ingrese Apellido" required>
-            <input type="text" name="txtCedula" class="Cedula" placeholder="Ingrese cedula" required disabled>
-            <input type="email" name="txtEmail" class="Cedula" placeholder="Ingrese email" required>
+        <h2>Editar contraseña</h2>
+        <form action="../Dao/editarPassword.php" class="Registrar" method="POST">
+            <input type="password" name="txtContrasenaA" class="Cedula" placeholder="Ingrese su contraseña actual" required>
+            <input type="password" name="txtContrasena" class="Cedula" placeholder="Ingrese nueva contraseña" required>
+            <input type="password" name="txtConfirmed-pass" class="Cedula" placeholder="vuelva a ingresar la contraseña" required>
+            <input type="hidden" name="oculto">
+            <input type="hidden" name="id2" value="<?php echo $empleado->Cedula; ?>">
             <br>
             <input type="submit" class="actualizar" value="Actualizar">
-            <a href="../views/Surcursal.html" class="Cancelar">Cancelar</a>
+            <a href="cambiarDatos.html" class="Cancelar">Cancelar</a>
             <br><br>
         </form>
     </div>

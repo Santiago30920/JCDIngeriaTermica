@@ -61,14 +61,14 @@
     padding-bottom: 15px;
     padding-right: 20px;
     padding-left: 20px;
-    background-color: #118607;
+    background-color: #af0f0f;
     color: white;
     margin-left: 1%;
     font-size: 17px;
 }
 .Cancelar{
     text-decoration: none;
-    background-color: #e62a2a;
+    background-color: #252525;
     color: white;
     padding: 15px 20px 15px 20px;
     margin-left: -81%;
@@ -76,7 +76,7 @@
 }
 .registro .aceptar:hover{
     background-color: white;
-    border: 1px solid #118607;
+    border: 1px solid #086600;
     color: #118607;
 }
 .Cancelar:hover{

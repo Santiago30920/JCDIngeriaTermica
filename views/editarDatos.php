@@ -4,13 +4,10 @@ if (!isset($_SESSION['Cedula'])) {
     header('Location:../login.php');
 }elseif(isset($_SESSION['Cedula'])){
     include '../Conexion/Conexion.php';
-    $id = $_GET['id'];
-    $setencia = $bd->prepare("SELECT * FROM equipos WHERE idEquipos = ?");
+    $id = $_SESSION['Cedula'];
+    $setencia = $bd->prepare("SELECT * FROM empleados WHERE Cedula = ?");
     $resultado = $setencia->execute([$id]);
-    $empresa = $setencia->fetch(PDO::FETCH_OBJ);
-
-    $sentencia1 = $bd->query('SELECT * FROM empleados');
-    $empleado = $sentencia1->fetchAll(PDO::FETCH_OBJ);
+    $empleado = $setencia->fetch(PDO::FETCH_OBJ);
 }else{
     echo '<script type="text/javascript">
     alert("error en el sistema");
@@ -25,13 +22,12 @@ $estado="Administrador";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualizar equipos</title>
+    <title>Editar datos</title>
     <link rel="icon" href="../style/log/Logo.png">
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
     <link rel="stylesheet" href="../style/css/header-menu.css">
     <link rel="stylesheet" href="../style/css/registrar.css">
-    <link rel="stylesheet" href="../style/css/ServiciosR.css">
 </head>
 
 <body>
@@ -39,7 +35,7 @@ $estado="Administrador";
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
         <img src="../style/log/login.png" alt="login" class="login">
         <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
-        <div class="menu" style="margin-right: 35%;">
+        <div class="menu">
             <ul class="nav">
                 <li><a href="menu.php">Menú</a></li>
                 <li><a href="Empresa.php">Empresa</a></li>
@@ -50,38 +46,20 @@ $estado="Administrador";
         </div>
     </header>
     <div class="registro">
-        <h2>Actualizacion de equipos</h2>
-        <form action="../Dao/editarEquipos.php" class="Registrar" method="POST">
-            <input type="text" name="txtNombre" class="Nombre-50" value="<?php echo $empresa->NombreEquipos?>" style="margin-right: 11%;" placeholder="Nombre del equipo">
-            <input type="text" name="txtReferencia" style="margin-left: -2%;" value="<?php echo $empresa->Referencia?>" class="Nombre-50" placeholder="referencia">
-            <input type="text" name="txtVoltaje"  style="margin-right: 11%;" value="<?php echo $empresa->Voltaje?>" class="Nombre-50" placeholder="Voltaje">
-            <input type="text" name="txtModelo" style="margin-left: -2%;" value="<?php echo $empresa->Modelo?>" class="Nombre-50" placeholder="Modelo">
-            <select name="txtNombreE" id="gas" class="Rol-50">
-            <option value="<?php echo $empresa->CedulaEmpleado?>"> <?php echo $empresa->CedulaEmpleado?></option>
-                <?php 
-                    foreach($empleado as $dato1){
-                ?>
-                <option value="<?php echo $dato1->Cedula?>"><?php echo $dato1->Nombre?></option>
-                <?php 
-                    } 
-                ?>
-            </select>
-            <select name="txtGas" id="gas" class="Rol-50">
-                <option  value="<?php echo $empresa->TipoGas?>"><?php echo $empresa->TipoGas?></option>
-                <option value="Propanao">Propano</option>
-                <option value="Natural">Natural</option>
-                <option value="Ninguno">Ninguno</option>
-            </select>
-            <input type="text" name="txtMarca" value="<?php echo $empresa->Marca?>" style="margin-right: 11%;" class="Nombre-50" placeholder="Marca">
-            <input type="number" name="txtSerial" value="<?php echo $empresa->NumeroSerie?>" style="margin-left: -2%;" class="Nombre-50" placeholder="Numero de serie">
-            <input type="text" name="txtCapacidad" class="Nombre" value="<?php echo $empresa->Capacidad?>" style="width: 84.5%;" placeholder="Capacidad">
-            <br>
-            <textarea name="txtDescripcion" class="Descripcion" id="Descripcion" cols="165" rows="5" placeholder="Ingrese una descripcion"><?php echo $empresa->Descripcion?></textarea>
-            <br><br>
+        <h2>Editar usuario</h2>
+        <form action="../Dao/EditarPerfil.php" class="Registrar" method="POST">
+            <input type="text" name="txtNombre" value="<?php echo $empleado->Nombre; ?>" class="Nombre" placeholder="Ingrese nombre" required>
+            <input type="text" name="txtApellido" value="<?php echo $empleado->Apellidos; ?>" class="Nombre" placeholder="Ingrese Apellido" required>
+            <input type="text" name="txtCedula" value="<?php echo $empleado->Cedula; ?>" class="Cedula" placeholder="Ingrese cedula" required disabled>
+            <input type="email" name="txtEmail" value="<?php echo $empleado->Email; ?>" class="Cedula" placeholder="Ingrese email" required>
+            <input type="number" name="txtTelefono" value="<?php echo $empleado->Telefono; ?>" class="Nombre" placeholder="Ingrese Telefono" required>
+
             <input type="hidden" name="oculto">
-            <input type="hidden" name="id2" value="<?php echo $empresa->idEquipos;?>">
+            <input type="hidden" name="id2" value="<?php echo $empleado->Cedula; ?>">
+
+            <br>
             <input type="submit" class="actualizar" value="Actualizar">
-            <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>
+            <a href="cambiarDatos.html" class="Cancelar">Cancelar</a>
             <br><br>
         </form>
     </div>
