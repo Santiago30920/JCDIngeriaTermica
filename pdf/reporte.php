@@ -6,9 +6,15 @@
     $id = $_GET['id'];
     $id2 = $_GET['id2'];
     $id3 = $_GET['id3'];
+    $dia = $_GET['dia'];
 
-    $consulta = "SELECT * FROM equipos, sucursal, empleados WHERE idEquipos = '$id' AND idSucursal = '$id2' AND Cedula = '$id3'";
-    $resultado = $mysqli->query($consulta);
+    if ($dia === 'Preventivo') {
+        $consulta = "SELECT * FROM equipos, sucursal, empleados, preventivo WHERE idEquipos = '$id' AND idSucursal = '$id2' AND Cedula = '$id3'AND idEquipo = '$id'";
+        $resultado = $mysqli->query($consulta);
+    }else{
+        $consulta = "SELECT * FROM equipos, sucursal, empleados, correctivo WHERE idEquipos = '$id' AND idSucursal = '$id2' AND Cedula = '$id3' AND idEquiposs = '$id'";
+        $resultado = $mysqli->query($consulta);
+    }
     if($resultado === TRUE){
         print_r('Paso consulta');
     }
@@ -42,7 +48,7 @@
         $pdf->Ln();
         $pdf->Cell(190,70,'DESCRIPCION: '.$row['Descripcion'],1,1,'l');
         $pdf->Ln(5);
-        $pdf->Cell(190,40,'OBSERVACIONES: '.$row['Obesrvaciones'],1,1,'L');
+        $pdf->Cell(190,40,'OBSERVACIONES: '.$row['Observaciones'],1,1,'L');
         
         $pdf->Ln(5);
         $pdf->SetFont('Arial','B',10);

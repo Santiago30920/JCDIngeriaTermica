@@ -3,7 +3,7 @@
 
     $mant = $_POST['txtMant'];
     $orden = $_POST['txtOrden'];
-    $Solicitud = $_POST['txtSolicitud'];
+    $Solicitud = $_POST['txtObservaciones'];
 
     $sentencia = $bd->prepare("INSERT INTO correctivo VALUES(?,?,?,?)");
     $resultado = $sentencia->execute(['', $orden, $Solicitud, $mant]);

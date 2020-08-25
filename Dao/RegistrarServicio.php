@@ -15,10 +15,10 @@
     $ingreso = $_POST['txtIngreso'];
     $salida = $_POST['txtSalida'];
     $diagnostico = $_POST['txtDiagonostico'];
-    $observaciones = $_POST['txtObservaciones'];
+    $observaciones = $_POST['txtSolicitud'];
 
-    $sentencia = $bd->prepare("INSERT INTO equipos VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    $resultado = $sentencia->execute(['',$serial, $nombre, $referencia, $voltaje, $modelo, $gas, $marca, $capacidad, $descripcion, $ingreso, $salida, $observaciones, $diagnostico,'En espera', $surcursal, $nombreE]);
+    $sentencia = $bd->prepare("INSERT INTO equipos VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+    $resultado = $sentencia->execute(['',$serial, $nombre, $referencia, $voltaje, $modelo, $gas, $marca, $capacidad, $descripcion, $ingreso, $salida, $observaciones, $diagnostico, '1','1','En espera', $surcursal, $nombreE]);
     //Registrar servicio
 
     //Funcion

@@ -29,7 +29,9 @@ $estado="Administrador";
 <body>
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
-        <img src="../style/log/login.png" alt="login" class="login">
+        <a href="cambiarDatos.html">
+            <img src="../style/log/login.png" alt="login" class="login">
+        </a>
         <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
         <div class="menu" >
             <ul class="nav">
@@ -57,7 +59,7 @@ $estado="Administrador";
             <th>Id empresa responsable</th>
             <th>Fecha de ingreso</th>
             <th>Fecha de entrega</th>
-            <th>Observaciones</th>
+            <th>Servicios</th>
             <th>Cedula tecnico encargado</th>
             <th>Diagnostico</th>
             <th>Editar servicio</th>
@@ -70,7 +72,7 @@ $estado="Administrador";
                 <td><?php echo $dato->IdSurcursal?></td>
                 <td><?php echo $dato->FechaIngreso?></td>
                 <td><?php echo $dato->FechaSalida?></td>
-                <td><?php echo $dato->Obesrvaciones?></td>
+                <td><?php echo $dato->Solicitud?></td>
                 <td><?php echo $dato->CedulaEmpleado?></td>
                 <td><?php echo $dato->Diagnostico?></td>
                 <td>
@@ -79,7 +81,7 @@ $estado="Administrador";
                     <a href="actualizarServicios.php?id=<?php echo $dato->idEquipos;?>" style="text-decoration:none; color:black" class="boton-actualizar">Servicio</a>
                 </td>
                 <td>
-                    <a href="../pdf/reporte.php?id=<?php echo $dato->idEquipos;?>&id2=<?php echo $dato->IdSurcursal?>&id3=<?php echo $dato->CedulaEmpleado?>" style="text-decoration:none; color:black" class="boton-actualizar" target="_blank">reporte</a>
+                    <a href="../pdf/reporte.php?id=<?php echo $dato->idEquipos;?>&id2=<?php echo $dato->IdSurcursal?>&id3=<?php echo $dato->CedulaEmpleado?>&dia=<?php echo $dato->Diagnostico?>" style="text-decoration:none; color:black" class="boton-actualizar" target="_blank">reporte</a>
                 </td>
             </tr>
                 <?php 

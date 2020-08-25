@@ -31,7 +31,9 @@ $estado="Administrador";
 <body>
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
-        <img src="../style/log/login.png" alt="login" class="login">
+        <a href="cambiarDatos.html">
+            <img src="../style/log/login.png" alt="login" class="login">
+        </a>
         <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
         <div class="menu">
             <ul class="nav">

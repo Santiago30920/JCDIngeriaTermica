@@ -32,7 +32,9 @@ $estado="Administrador";
 <body>
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
-        <img src="../style/log/login.png" alt="login" class="login">
+        <a href="cambiarDatos.html">
+            <img src="../style/log/login.png" alt="login" class="login">
+        </a>
         <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
     </header>
     <div class="registro">
@@ -46,10 +48,10 @@ $estado="Administrador";
             ?>
             </select>
             <input type="text" name="txtOrden" class="Nombre" placeholder="Orden de servicio" required>
-            <input type="text" name="txtSolicitud" class="Nombre" placeholder="Solicitud" required>
+            <textarea name="txtObservaciones" id="Observaciones" cols="155" rows="5" placeholder="Observaciones"></textarea>
             <br>
             <input type="submit" class="aceptar" value="Registrar">
-            <a href="../views/Surcursal.html" class="Cancelar">Cancelar</a>
+            <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>
             <br><br>
         </form>
     </div>

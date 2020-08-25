@@ -3,12 +3,12 @@
 
     $mant = $_POST['txtMant'];
     $orden = $_POST['txtOrden'];
-    $Solicitud = $_POST['txtSolicitud'];
+    $Observaciones = $_POST['txtObservaciones'];
 
     $sentencia = $bd->prepare("INSERT INTO preventivo VALUES(?,?,?,?)");
-    $resultado = $sentencia->execute(['', $orden, $Solicitud, $mant]);
+    $resultado = $sentencia->execute(['', $orden, $Observaciones, $mant]);
     if($resultado === true){
-        header('Location:../views/Servicios.php');
+        header('Location:../views/Servicios.php');  
     }else{
         echo'<script type="text/javascript">
         alert("Registro denegado");

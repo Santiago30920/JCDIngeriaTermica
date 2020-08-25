@@ -36,7 +36,9 @@ $estado="Administrador";
 <body>
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
-        <img src="../style/log/login.png" alt="login" class="login">
+        <a href="cambiarDatos.html">
+            <img src="../style/log/login.png" alt="login" class="login">
+        </a>
         <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
         <div class="menu" style="margin-right: 35%;">
             <ul class="nav">
@@ -99,7 +101,7 @@ $estado="Administrador";
                 <option value="Preventivo">Preventivo</option>
                 <option value="Correctivo">Correctivo</option>
             </select>
-            <textarea name="txtObservaciones" id="Observaciones" cols="165" rows="5" placeholder="Observaciones"></textarea>
+            <input type="text" name="txtSolicitud" class="Nombre" style="width: 85%;" placeholder="Solicitud" required>
             <br>
             <input type="submit" class="aceptar" value="Registrar">
             <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>

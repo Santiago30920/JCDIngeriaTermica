@@ -34,7 +34,9 @@ $estado="Administrador";
 <body>
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
-        <img src="../style/log/login.png" alt="login" class="login">
+        <a href="cambiarDatos.html">
+            <img src="../style/log/login.png" alt="login" class="login">
+        </a>
         <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
         <div class="menu" style="margin-right: 35%;">
             <ul class="nav">
@@ -60,7 +62,7 @@ $estado="Administrador";
                 <option value="En espera">En espera</option>
                 <option value="Resuelto">Resuelto</option>
             </select>
-            <textarea name="txtObservaciones" id="" cols="165" rows="5" placeholder="Observaciones"><?php echo $empresa->Obesrvaciones?></textarea>
+            <input type="text" name="txtSolicitud" class="Nombre" style="width: 85%;" placeholder="Solicitud" required>
             <input type="hidden" name="oculto">
             <input type="hidden" name="id2" value="<?php echo $empresa->idEquipos;?>">
             <br>

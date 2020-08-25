@@ -7,9 +7,9 @@ $id = $_POST['id2'];
 $ingreso = $_POST['txtIngreso'];
 $salida = $_POST['txtSalida'];
 $estado = $_POST['txtEstado'];
-$observaciones = $_POST['txtObservaciones'];
+$observaciones = $_POST['txtSolicitud'];
 
-$setencia = $bd->prepare("UPDATE equipos SET FechaIngreso = ?, FechaSalida = ?, Obesrvaciones = ?, Estado = ? WHERE idEquipos = ?");
+$setencia = $bd->prepare("UPDATE equipos SET FechaIngreso = ?, FechaSalida = ?, Solicitud = ?, Estado = ? WHERE idEquipos = ?");
 $resultado = $setencia->execute([$ingreso, $salida, $observaciones, $estado, $id]); 
 if($resultado === TRUE){
     echo '<script type="text/javascript">
