@@ -28,7 +28,7 @@ $estado="Administrador";
     <link rel="stylesheet" href="../style/css/registrar.css">
     <link rel="stylesheet" href="../style/css/ServiciosR.css">
 </head>
-
+    
 <body>
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">

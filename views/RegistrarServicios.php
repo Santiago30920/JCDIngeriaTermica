@@ -84,6 +84,11 @@ $estado="Administrador";
                     } 
                 ?>
             </select>
+            <select name="txtDias" id="Diagnostico" class="Rol-50">
+                <option value="Normal">Normal</option>
+                <option value="Dominicales">Dominicales</option>
+            </select>
+            <input type="text" name="txtPrecio" class="Nombre" style="width: 85%;" placeholder="Precio">
             <input type="text" name="txtCapacidad" class="Nombre" style="width: 84.5%;" placeholder="Capacidad">
             <br>
             <textarea name="txtDescripcion" class="Descripcion" id="Descripcion" cols="165" rows="5"

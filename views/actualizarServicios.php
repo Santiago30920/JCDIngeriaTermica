@@ -62,7 +62,7 @@ $estado="Administrador";
                 <option value="En espera">En espera</option>
                 <option value="Resuelto">Resuelto</option>
             </select>
-            <input type="text" name="txtSolicitud" class="Nombre" style="width: 85%;" placeholder="Solicitud" required>
+            <input type="text" name="txtSolicitud"  value="<?php echo $empresa->Solicitud?>" class="Nombre" style="width: 85%;" placeholder="Solicitud" required>
             <input type="hidden" name="oculto">
             <input type="hidden" name="id2" value="<?php echo $empresa->idEquipos;?>">
             <br>
