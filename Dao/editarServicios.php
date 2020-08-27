@@ -31,15 +31,15 @@ if($resultado === TRUE){
             <?php
                 if ($empresa->Diagnostico == "Preventivo") {
             ?>
-                    window.location.href="../views/editarPreventivo.php?id=<?php echo $id?>";
+                    window.location.href="../views/editarPreventivo.php?id1=<?php echo $id?>";
             <?php
                 }else{
             ?>
-                    window.location.href="../views/editarCorrectivo.php?id=<?php echo $id?>";
+                    window.location.href="../views/editarCorrectivo.php?id1=<?php echo $id?>";
             <?php
                 }
             ?>
-                }else{
+                }else{ 
                     window.location.href="../views/Servicios.php";
                 }      
         </script>    

@@ -26,7 +26,7 @@
         </script>';
     }else{
          echo '<script type="text/javascript">
-         alert("Error a la hora de actualizar informacion");
+         alert("Hubo un error al actualizarse, por favor he intente nuevamente");
          window.location.href="../views/Servicios.php";
          </script>';
     }

@@ -42,6 +42,9 @@
         $pdf->Cell(70,6,'MARCA: '.$row['Marca'],1,0,'C'); 
         $pdf->Cell(50,6,'EQUIPO: '.$row['NombreEquipos'],1,0,'C'); 
         $pdf->Cell(70,6,'MODELO: '.$row['Modelo'],1,1,'C');
+        $pdf->Cell(95,6,'COSTOS DE EMPLEADO: '.$row['CostosDeEmpleados'],1,0,'C'); 
+        $pdf->Cell(95,6,'COSTOS DE MAQUINARIA: '.$row['CostosDelEquipo'],1,1,'C');
+
         $pdf->Cell(105,6,'SERIE: '.$row['NumeroSerie'],1,0,'C'); 
         $pdf->Cell(85,6,'DIAGNOSTICO: '.$row['Diagnostico'],1,1,'C');
 
@@ -50,7 +53,7 @@
         $pdf->Ln(5);
         $pdf->Cell(190,40,'OBSERVACIONES: '.$row['Observaciones'],1,1,'L');
         
-        $pdf->Ln(5);
+        // $pdf->Ln(2);
         $pdf->SetFont('Arial','B',10);
         $pdf->SetTextColor(255,0,0);
         $pdf->Cell(190,20, 'MATERIALES Y REPUESTOS', 0, 1, 'C');

@@ -19,7 +19,7 @@
     $diagnostico = $_POST['txtDiagonostico'];
     $observaciones = $_POST['txtSolicitud'];
 
-    if ($Dias === 'Normal') {
+    if ($dias === 'Normal') {
         $total = 119000;
     }else{
         $total = 59500;

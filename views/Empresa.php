@@ -76,7 +76,7 @@ $estado="Administrador";
                 <td><?php echo $dato->Estado;?></td>
                 <td>
                     <a href="actualizarEmpresa.php?id=<?php echo $dato->Nit;?>"  style="text-decoration:none; color:black" class="boton-actualizar">Editar</a>
-                </td>
+                </td> 
             </tr>
             <?php
                 }

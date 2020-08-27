@@ -13,7 +13,7 @@
         header('Location:../views/Empresa.php');
     }else{
         echo'<script type="text/javascript">
-        alert("Registro denegado \nPuede que el correo, cedula o telefono ya este registrado \nVerifique he intente nuevamente");
+        alert("Registro denegado \nVerifique he intente nuevamente");
         window.location.href="../views/RegistrarEmpresa.php";
         </script>';
     }

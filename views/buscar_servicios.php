@@ -12,7 +12,7 @@ if (!isset($_SESSION['Cedula'])) {
         IdSurcursal LIKE '$busqueda' OR 
         FechaIngreso LIKE '$busqueda' OR 
         FechaSalida LIKE '$busqueda' OR 
-        Obesrvaciones LIKE '$busqueda' OR 
+        CostosDelEquipo LIKE '$busqueda' OR 
         CedulaEmpleado LIKE '$busqueda' OR
         Diagnostico LIKE '$busqueda' OR
         Estado LIKE '$busqueda%')");
@@ -21,7 +21,7 @@ if (!isset($_SESSION['Cedula'])) {
         IdSurcursal LIKE '%$busqueda%' OR 
         FechaIngreso LIKE '%$busqueda%' OR 
         FechaSalida LIKE '%$busqueda%' OR 
-        Obesrvaciones LIKE '%$busqueda%' OR 
+        CostosDelEquipo LIKE '%$busqueda%' OR 
         CedulaEmpleado LIKE '%$busqueda%' OR 
         Diagnostico LIKE '%$busqueda%' OR 
         Estado LIKE '%$busqueda%')");
@@ -70,7 +70,7 @@ $estado="Administrador";
             <input type="submit" value="Buscar" class="buscar">
             <a href="registrarEmpleado.php" class="RegistroU">Registro</a>
             <button class="Inactivos" name="busqueda" value="En_espera">En espera</button>
-            <button class="Inactivos" name="busqueda" value="Terminados">Terminados</button>
+            <button class="Inactivos" name="busqueda" value="Resuelto">Terminados</button>
         </form>
     </div>
     <div class="tabla" style="margin-left: 26; width: 150%;">
@@ -80,7 +80,7 @@ $estado="Administrador";
             <th>Id empresa responsable</th>
             <th>Fecha de ingreso</th>
             <th>Fecha de entrega</th>
-            <th>Observaciones</th>
+            <th>Solicitud</th>
             <th>Cedula tecnico encargado</th>
             <th>Diagnostico</th>
             <th>Editar servicio</th>

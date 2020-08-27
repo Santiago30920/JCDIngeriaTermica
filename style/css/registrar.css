@@ -76,13 +76,13 @@
 }
 .registro .aceptar:hover{
     background-color: white;
-    border: 1px solid #086600;
-    color: #118607;
+    border: 1px solid #af0f0f;
+    color: #af0f0f;
 }
 .Cancelar:hover{
     background-color: white;
-    border: 1px solid #e62a2a;
-    color: #e62a2a;
+    border: 1px solid #252525;
+    color: #252525;
 }
 .actualizar{
     border: none;

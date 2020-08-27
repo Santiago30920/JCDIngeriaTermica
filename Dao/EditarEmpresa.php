@@ -19,7 +19,7 @@
         </script>';
     }else{
         echo '<script type="text/javascript">
-        alert("email ya esta registrado intente nuevamente");
+        alert("Hubo un error al actualizarse, por favor he intente nuevamente");
         window.location.href="../views/Empresa.php";
         </script>';
     }
