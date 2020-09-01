@@ -76,7 +76,7 @@
 }
 .registro .aceptar:hover{
     background-color: white;
-    border: 1px solid #af0f0f;
+    border: 1px solid #af0f0f; 
     color: #af0f0f;
 }
 .Cancelar:hover{

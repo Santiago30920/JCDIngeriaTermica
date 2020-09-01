@@ -26,13 +26,14 @@
     margin-bottom: 3%;
     margin-left: 1%;
     border: none;
-    background-color: #118607;
+    background-color: #af0f0f;
     color: white;
 }
 .inicio .Aceptar:hover{
+    transition-duration: 0.7s;
     background-color: white;
-    color: #118607;
-    border: 1px solid #118607;
+    color: #af0f0f;
+    border: 1px solid #af0f0f;
 }
 .Cancelar{
     margin-left: -83%;
@@ -42,14 +43,21 @@
     padding-left: 45px;
     padding-right: 45px;
     color: white;
-    background-color: rgb(240, 71, 71);
+    background-color: #252525;
     text-decoration: none;
 }
 .Cancelar:hover{
-    color: rgb(240, 71, 71);
-    border: 1px solid rgb(240, 71, 71);
+    transition-duration: 0.7s;
+    color: #252525;
+    border: 1px solid #252525;
     background-color: white;
 }
 .olvide{
-    margin-left: -68%;
+    margin-left: -66%;
+    color: #252525;
+    text-decoration: none;
+}
+.olvide:hover{
+    transition-duration: 0.5s;
+    color: #af0f0f;
 }

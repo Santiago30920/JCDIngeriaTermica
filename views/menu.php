@@ -142,11 +142,10 @@ $estado = "Administrador";
         </div>
     </div>
     <div class="busqueda">
-        <a href="#" class="guias">Empresa</a>
-        <a href="#" class="guias">Surcursal</a>
-        <a href="#" class="guias">Equipos</a>
-        <a href="#" class="guias">Empleados</a>
-        <a href="#" class="guias">Mantenimientos</a>
+        <a href="Empresa.php" class="guias">Empresa</a>
+        <a href="Surcursal.php" class="guias">Surcursal</a>
+        <a href="Empleados.php" class="guias">Empleados</a>
+        <a href="Servicios.php" class="guias">Servicios</a>
     </div>
     <footer>
         <div class="contactos">

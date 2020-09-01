@@ -36,6 +36,7 @@
     font-size: 20px; 
 }
 .menu li:hover{
+    transition-duration: 0.5s;
     background-color: rgb(136, 0, 0);
 }
 .Cerrar{
