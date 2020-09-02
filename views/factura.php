@@ -4,8 +4,11 @@ if (!isset($_SESSION['Cedula'])) {
     header('Location:../login.php');
 }elseif(isset($_SESSION['Cedula'])){
     include '../Conexion/Conexion.php';
-    $sentencia = $bd->query('SELECT * FROM equipos');
-    $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ);
+    $id = (int)$_GET['id'];
+    $sentencia = $bd->query('SELECT * FROM factura WHERE id_equipos = '.$id.';');
+    // $resultado = $sentencia->execute([$id]);
+    $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
+
 }else{
     echo '<script type="text/javascript">
     alert("error en el sistema");
@@ -16,16 +19,18 @@ $estado="Administrador";
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios</title>
+    <title>Registar empleado</title>
     <link rel="icon" href="../style/log/Logo.png">
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
     <link rel="stylesheet" href="../style/css/header-menu.css">
-    <link rel="stylesheet" href="../style/css/TablaEmplados.css">
+    <link rel="stylesheet" href="../style/css/registrar.css">
 </head>
+
 <body>
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
@@ -33,7 +38,7 @@ $estado="Administrador";
             <img src="../style/log/login.png" alt="login" class="login">
         </a>
         <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
-        <div class="menu" >
+        <div class="menu">
             <ul class="nav">
             <li><a href="menu.php">Menú</a></li>
                 <li><a href="Empresa.php">Empresa</a></li>
@@ -43,57 +48,50 @@ $estado="Administrador";
             </ul>
         </div>
     </header>
-    <div class="Barra_de_busqueda">
-    <form action="buscar_servicios.php" method="GET">
-            <input type="text" name="busqueda" id="busqueda" placeholder="Busqueda" class="busqueda">
-            <input type="submit" value="Buscar" class="buscar">
-            <a href="registrarServicios.php" class="RegistroU">Registro</a>
-            <button class="Inactivos" name="busqueda" value="En_espera">En espera</button>
-            <button class="Inactivos" name="busqueda" value="Resuelto">Terminados</button>
+    <?php if($empleado == null){?>
+    <div class="registro">
+        <h2>Registrar factura</h2>
+        <form action="../Dao/factura.php" class="Registrar" method="POST">
+            <input type="number" name="txtMano" class="Nombre" placeholder="ngrese costos de repuestos" required>
+            <input type="number" name="txtCostos" class="Apellido" placeholder="Ingrese costos de mano obra" required>
+            <select name="txtSemana" id="Rol" class="Rol" required>
+                <option value="Semana">Entre semana</option>
+                <option value="Fin">Fin de semana</option>
+            </select>
+            <select name="txtPagos" id="Rol" class="Rol" required>
+                <option value="Pediente por facturar">Pediente por facturar</option>
+                <option value="Facturado">facturado</option>
+                <option value="Cancelado">Cancelado</option>
+            </select>
+            <br>
+            <input type="hidden" name="id2" value="<?php echo $id;?>">
+            <input type="submit" class="aceptar" value="Registrar">
+            <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>
+            <br><br>
         </form>
-    </div>
-    <div class="tabla" style="margin-left: 26; width: 150%;">
-        <h3>Lista de servicios registradas</h3>
-        <table class="usuario" style="margin-left: 0;">
-            <th>Numero de serie</th>
-            <th>Id empresa responsable</th>
-            <th>Fecha de ingreso</th>
-            <th>Fecha de entrega</th>
-            <th>Solicitud</th>
-            <th>Cedula tecnico encargado</th>
-            <th>Diagnostico</th>
-            <th>Editar servicio</th>
-            <th>Factura</th>
-            <th>Reporte</th>
-            <?php
-                    foreach($equipos as $dato){
-            ?>
-            <tr>
-                <td><?php echo $dato->NumeroSerie?></td>
-                <td><?php echo $dato->IdSurcursal?></td>
-                <td><?php echo $dato->FechaIngreso?></td>
-                <td><?php echo $dato->FechaSalida?></td>
-                <td><?php echo $dato->Solicitud?></td>
-                <td><?php echo $dato->CedulaEmpleado?></td>
-                <td><?php echo $dato->Diagnostico?></td>
-                <td>
-                    <a href="actualizarEquipos.php?id=<?php echo $dato->idEquipos;?>" style="text-decoration:none; color:black" class="boton-actualizar">Equipos</a>
-                    <br><br>
-                    <a href="actualizarServicios.php?id=<?php echo $dato->idEquipos;?>" style="text-decoration:none; color:black" class="boton-actualizar">Servicio</a>
-                </td>
-                <td>
-                    <a href="factura.php?id=<?php echo $dato->idEquipos;?>" style="text-decoration: none; color: black;" class="boton-actualizar">Factura</a>
-                </td>
-                <td>
-                    <a href="../pdf/reporte.php?id=<?php echo $dato->idEquipos;?>&id2=<?php echo $dato->IdSurcursal?>&id3=<?php echo $dato->CedulaEmpleado?>&dia=<?php echo $dato->Diagnostico?>" style="text-decoration:none; color:black" class="boton-actualizar" target="_blank">reporte</a>
-                </td>
-
-            </tr>
-                <?php 
-                    } 
-                ?>
-        </table>
-        <br><br>
+    <?php }else{?>
+        <div class="registro">
+        <h2>Actualizar factura</h2>
+        <form action="../Dao/editarFactura.php" class="Registrar" method="POST">
+        <?php foreach($empleado as $dato){ ?>
+            <input type="number" value="<?php echo $dato->repuestos?>" name="txtMano" class="Nombre" placeholder="ingrese costos de repuestos" required>
+            <input type="number"  value="<?php echo $dato->	mano_obra?>" name="txtCostos" class="Apellido" placeholder="Ingrese costos de mano obra" required>
+            <select name="txtPagos" id="Rol" class="Rol" required>
+                <option value="<?php echo $dato->pagos?>" selected><?php echo $dato->pagos?></option>
+                <option value="Pediente por facturar">Pediente por facturar</option>
+                <option value="Facturado">facturado</option>
+                <option value="Cancelado">Cancelado</option>
+            </select>
+            <br>
+            <input type="hidden" name="oculto">
+            <input type="hidden" name="id3" value="<?php echo $dato->id_factura; ?>">
+            <input type="hidden" name="id2" value="<?php echo $id; ?>">
+            <input type="submit" class="actualizar" value="Actualizar">
+            <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>
+            <br><br>
+        <?php } ?>
+        </form>
+    <?php } ?>
     </div>
     <footer>
         <div class="contactos">
@@ -129,5 +127,7 @@ $estado="Administrador";
                 href="https://www.jcdingenieriatermica.com/horno-turbochef">Horno turbochef precio</a>
         </div>
     </div>
+    <script type="text/javascript" src="../style/js/calendario.js"></script>
 </body>
+
 </html>

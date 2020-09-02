@@ -54,15 +54,15 @@ $estado="Administrador";
         <h2>Registro de equipos</h2>
         <form action="../Dao/RegistrarServicio.php" class="Registrar" method="POST">
             <input type="text" name="txtNombre" class="Nombre-50" style="margin-right: 11%;" placeholder="Nombre del equipo">
-            <input type="text" name="txtReferencia" style="margin-left: -2%;" class="Nombre-50" placeholder="referencia">
+            <input type="text" style="margin: -0.3%;" name="txtReferencia" style="margin-left: -2%;" class="Nombre-50" placeholder="referencia">
             <input type="text" name="txtVoltaje"  style="margin-right: 11%;" class="Nombre-50" placeholder="Voltaje">
-            <input type="text" name="txtModelo" style="margin-left: -2%;" class="Nombre-50" placeholder="Modelo">
-            <select name="txtGas" id="gas" class="Rol-50">
+            <input type="text" style="margin: -0.3%;"name="txtModelo" style="margin-left: -2%;" class="Nombre-50" placeholder="Modelo">
+            <select name="txtGas" style="width: 90%;" id="gas" class="Rol-50">
                 <option value="Propano">Propano</option>
                 <option value="Natural">Natural</option>
                 <option value="Ninguno">Ninguno</option>
             </select>
-            <select name="txtNombreE" id="gas" class="Rol-50">
+            <select name="txtNombreE" id="gas" class="Rol-50" style="width: 90%;">
             <option value="">Seleccione nombre responsable</option>
                 <?php 
                     foreach($empleado as $dato1){
@@ -73,8 +73,8 @@ $estado="Administrador";
                 ?>
             </select>
             <input type="text" name="txtMarca" style="margin-right: 11%;" class="Nombre-50" placeholder="Marca">
-            <input type="number" name="txtSerial"  style="margin-left: -2%;" class="Nombre-50" placeholder="Numero de serie">
-            <select name="txtSurcursal" id="gas" class="Rol-50">
+            <input type="number" name="txtSerial"  style="margin-left: -0.3%;" class="Nombre-50" placeholder="Numero de serie">
+            <select name="txtSurcursal"  style="width: 90%;" id="gas" class="Rol-50">
                 <option value="">Seleccione nombre de la surcursal</option>
                 <?php 
                     foreach($surcursal as $dato){
@@ -84,12 +84,12 @@ $estado="Administrador";
                     } 
                 ?>
             </select>
-            <select name="txtDias" id="Diagnostico" class="Rol-50">
+            <!-- <select name="txtDias" id="Diagnostico" class="Rol-50">
                 <option value="Normal">Normal</option>
                 <option value="Dominicales">Dominicales</option>
-            </select>
-            <input type="text" name="txtPrecio" class="Nombre" style="width: 85%;" placeholder="Precio">
-            <input type="text" name="txtCapacidad" class="Nombre" style="width: 84.5%;" placeholder="Capacidad">
+            </select> -->
+            <!-- <input type="text" name="txtPrecio" class="Nombre" style="width: 85%;" placeholder="Precio"> -->
+            <input type="text"  style="width: 86%;" name="txtCapacidad" class="Nombre" style="width: 84.5%;" placeholder="Capacidad">
             <br>
             <textarea name="txtDescripcion" class="Descripcion" id="Descripcion" cols="165" rows="5"
             placeholder="Ingrese una descripcion"></textarea>
