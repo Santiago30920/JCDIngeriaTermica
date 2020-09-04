@@ -1,4 +1,7 @@
 <?php
+    include '../Conexion/Conexion.php';
+    $sentencia = $bd->query('SELECT * FROM empleados');
+    $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,38 +9,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="icon" href="style/log/Logo.png">
-    <link rel="stylesheet" href="style/css/header.css">
-    <link rel="stylesheet" href="style/css/login.css">
-    <link rel="stylesheet" href="style/css/footer.css">
-    <link rel="stylesheet" href="style/css/calendario.css">
+    <title>Recuperar contraseña</title>
+    <link rel="icon" href="../style/log/Logo.png">
+    <link rel="stylesheet" href="../style/css/header.css">
+    <link rel="stylesheet" href="../style/css/login.css">
+    <link rel="stylesheet" href="../style/css/footer.css">
+    <link rel="stylesheet" href="../style/css/calendario.css">
 </head>
 
 <body>
     <header class="header-index">
-        <img src="style/log/Logo1.png" alt="logo" class="logo" style="margin-bottom: 2.5%;">
+        <img src="../style/log/Logo1.png" alt="logo" class="logo" style="margin-bottom: 2.5%;">
     </header>
     <div class="inicio">
-        <form action="Dao/Login.php" method="post">
-            <h2>INICIO DE SESION</h2>
+        <form action="../Dao/recuperar.php" method="post">
+            <h2>¿HAS OLVIDADO TU CONTRASEÑA?</h2>
             <input type="email" name="txtEmail" class="contenedor" placeholder="Ingrese email" required>
-            <input type="password" name="txtPassword" class="contenedor" placeholder="Ingrese contraseña" required>
             <br>
-            <input type="submit" class="Aceptar" value="Ingresar">
-            <a href="https://www.jcdingenieriatermica.com/" class="Cancelar">Cancelar</a>
+            <input type="submit" class="Aceptar" value="Enviar">
+            <a href="../index.php" class="Cancelar">Cancelar</a>
             <br>
-            <a href="views/Contraseña.php" class="olvide">¿Has olvidado tu contraseña?</a>
             <br><br><br>
         </form>
     </div>
     <footer>
         <div class="contactos">
-            <img src="style/log/telefono1.png" alt="telefo">
+            <img src="../style/log/telefono1.png" alt="telefo">
             <a href="#">Equipos: 311 8518533</a>
-            <img src="style/log/telefono1.png" alt="telefo">
+            <img src="../style/log/telefono1.png" alt="telefo">
             <a href="#">Equipos: 321 9144584</a>
-            <img src="style/log/telefono1.png" alt="telefo">
+            <img src="../style/log/telefono1.png" alt="telefo">
             <a href="#">Equipos: 310 2529091</a>
         </div>
         <p>
