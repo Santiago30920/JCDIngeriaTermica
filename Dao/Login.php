@@ -9,7 +9,7 @@
     if($datos === FALSE){
         echo '<script type="text/javascript">
         alert("Correo electronico o contraseña incorrecto");
-        window.location.href="../login.php";
+        window.location.href="../index.php";
         </script>';
     }elseif($setencia->rowCount() == 1){
        $_SESSION['Cedula'] = $datos->Cedula;
