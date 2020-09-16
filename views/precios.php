@@ -4,7 +4,7 @@ if (!isset($_SESSION['Cedula'])) {
     header('Location:../index.php');
 }elseif(isset($_SESSION['Cedula'])){
     include '../Conexion/Conexion.php';
-    $sentencia1 = $bd->query('SELECT * FROM equipos');
+    $sentencia1 = $bd->query('SELECT * FROM precio LIMIT 1');
     $equipos = $sentencia1->fetchAll(PDO::FETCH_OBJ);
 }else{
     echo '<script type="text/javascript">
@@ -20,7 +20,7 @@ $estado="Administrador";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Correctivo</title>
+    <title>Prevntivo</title>
     <link rel="icon" href="../style/log/Logo.png">
     <link rel="stylesheet" href="../style/css/header.css">
     <link rel="stylesheet" href="../style/css/footer.css">
@@ -28,7 +28,7 @@ $estado="Administrador";
     <link rel="stylesheet" href="../style/css/registrar.css">
     <link rel="stylesheet" href="../style/css/ServiciosR.css">
 </head>
-
+    
 <body>
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
@@ -38,17 +38,18 @@ $estado="Administrador";
         <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
     </header>
     <div class="registro">
-        <h2>Correctivo</h2>
-        <form action="../Dao/Correctivo.php" class="Registrar" method="POST">
-        <select name="txtMant" id="mant" class="Rol-50" style="width: 85%">
-        <?php foreach($equipos as $dato1){?>
-            <option value="<?php echo $dato1->idEquipos?>"><?php echo $dato1->idEquipos?></option>
-                <?php 
-                } 
-            ?>
-            </select>
-            <input type="text" name="txtOrden" class="Nombre" placeholder="Orden de servicio" required>
-            <textarea name="txtObservaciones" id="Observaciones" cols="155" rows="5" placeholder="Observaciones"></textarea>
+        <h2>Editar precios</h2>
+        <form action="../Dao/precio.php" class="Registrar" method="POST">
+        <?php foreach($equipos as $dato){ ?>
+
+            <input type="int" name="txtsemana" value="<?php echo $dato->semana;?>" class="Nombre" placeholder="Ingrese precio de entre semana" required>
+            <input type="int" name="txtfin" class="Nombre" value="<?php echo $dato->fin_semana;?>" placeholder="Ingrese precio de fines semana" required>
+            <input type="int" name="txthora_s" class="Nombre" value="<?php echo $dato->hora_semana;?>" placeholder="Ingrese precio hora extra de entre semana" required>
+            <input type="int" name="txthora_f" class="Nombre" value="<?php echo $dato->	hora_fin_semana;?>" placeholder="Ingrse precio hora extra fin de semana" required>
+            <input type="int" name="txtIva" class="Nombre" value="<?php echo $dato->iva;?>" placeholder="Ingrese precio iva" required>
+        
+        <?php }?>    
+        
             <br>
             <input type="submit" class="aceptar" value="Registrar">
             <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>

@@ -91,6 +91,18 @@
     padding: 15px 20px 15px 20px;
     margin-bottom: 1.5%;
 }
+.Precios{
+    text-decoration: none;
+    background-color: #252525;
+    color: white;
+    padding: 15px 20px 15px 20px;
+    margin-bottom: 1.5%;
+}
+.Precios:hover{
+    background-color: white;
+    border: 1px solid #252525;
+    color: #252525;
+}
 .actualizar:hover{
     border: 1px solid #9b003b;
     color: #9b003b;

@@ -5,7 +5,7 @@ if (!isset($_SESSION['Cedula'])) {
 }elseif(isset($_SESSION['Cedula'])){
     include '../Conexion/Conexion.php';
     $id = (int)$_GET['id'];
-    $sentencia = $bd->query('SELECT * FROM factura WHERE id_equipos = '.$id.';');
+    $sentencia = $bd->query('SELECT * FROM factura WHERE id_equipos_f = '.$id.';');
     // $resultado = $sentencia->execute([$id]);
     $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
@@ -59,14 +59,15 @@ $estado="Administrador";
                 <option value="Fin">Fin de semana</option>
             </select>
             <select name="txtPagos" id="Rol" class="Rol" required>
-                <option value="Pediente por facturar">Pediente por facturar</option>
+                <option value="Pediente por cobrar">Pediente por cobrar</option>
                 <option value="Facturado">facturado</option>
                 <option value="Cancelado">Cancelado</option>
             </select>
             <br>
             <input type="hidden" name="id2" value="<?php echo $id;?>">
-            <input type="submit" class="aceptar" value="Registrar">
+            <input type="submit" class="aceptar" style="margin-left: 90px;" value="Registrar">
             <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>
+            <a href="../views/Precios.php"  class="Precios">Precios</a>
             <br><br>
         </form>
     <?php }else{?>
@@ -78,7 +79,7 @@ $estado="Administrador";
             <input type="number"  value="<?php echo $dato->	mano_obra?>" name="txtCostos" class="Apellido" placeholder="Ingrese costos de mano obra" required>
             <select name="txtPagos" id="Rol" class="Rol" required>
                 <option value="<?php echo $dato->pagos?>" selected><?php echo $dato->pagos?></option>
-                <option value="Pediente por facturar">Pediente por facturar</option>
+                <option value="Pediente por cobrar">Pediente por cobrar</option>
                 <option value="Facturado">facturado</option>
                 <option value="Cancelado">Cancelado</option>
             </select>

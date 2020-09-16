@@ -43,7 +43,7 @@ $estado="Administrador";
         <select name="txtMant" id="mant" class="Rol-50" style="width:84%">
         <?php
             foreach($equipos as $dato){?>
-            <option value="<?php echo $dato->idEquipos?>"><?php echo $dato->NombreEquipos?></option>
+            <option value="<?php echo $dato->idEquipos?>"><?php echo $dato->idEquipos?></option>
                 <?php } 
             ?>
             </select>

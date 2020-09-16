@@ -54,9 +54,9 @@ $estado="Administrador";
             <br><br>
             <form action="../Dao/editarServicios.php" class="Registrar" method="POST">
             <label class="especificacion" style="margin-left: -0%;">Fecha de ingreso:</label>
-            <input type="datetime-local" name="txtIngreso" value="<?php echo $empresa->FechaIngreso?>" id="ingreso" class="Fecha">
+            <input type="date" name="txtIngreso" value="<?php echo $empresa->FechaIngreso?>" id="ingreso" class="Fecha">
             <label class="especificacion" style="margin-left: 10%;">Fecha de salida:</label>
-            <input type="datetime" name="txtSalida" value="<?php echo $empresa->FechaSalida?>" id="salida" class="Fecha">
+            <input type="date" name="txtSalida" value="<?php echo $empresa->FechaSalida?>" id="salida" class="Fecha">
             <select name="txtEstado" id="Diagnostico" class="Rol-50">
                 <option value="<?php echo $empresa->Estado?>"><?php echo $empresa->Estado?></option>
                 <option value="En espera">En espera</option>
