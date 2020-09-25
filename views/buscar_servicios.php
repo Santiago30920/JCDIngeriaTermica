@@ -12,16 +12,14 @@ if (!isset($_SESSION['Cedula'])) {
         IdSurcursal LIKE '$busqueda' OR 
         FechaIngreso LIKE '$busqueda' OR 
         FechaSalida LIKE '$busqueda' OR 
-        CostosDelEquipo LIKE '$busqueda' OR 
         CedulaEmpleado LIKE '$busqueda' OR
         Diagnostico LIKE '$busqueda' OR
         Estado LIKE '$busqueda%')");
     }else{
-    $sentencia = $bd->query("SELECT * FROM `equipos` WHERE(NumeroSerie LIKE '%$busqueda%' OR 
+        $sentencia = $bd->query("SELECT * FROM `equipos` WHERE(NumeroSerie LIKE '%$busqueda%' OR 
         IdSurcursal LIKE '%$busqueda%' OR 
         FechaIngreso LIKE '%$busqueda%' OR 
         FechaSalida LIKE '%$busqueda%' OR 
-        CostosDelEquipo LIKE '%$busqueda%' OR 
         CedulaEmpleado LIKE '%$busqueda%' OR 
         Diagnostico LIKE '%$busqueda%' OR 
         Estado LIKE '%$busqueda%')");
@@ -68,7 +66,7 @@ $estado="Administrador";
     <form action="buscar_servicios.php" method="GET">
             <input type="text" name="busqueda" id="busqueda" placeholder="Busqueda" class="busqueda">
             <input type="submit" value="Buscar" class="buscar">
-            <a href="registrarEmpleado.php" class="RegistroU">Registro</a>
+            <a href="registrarServicios.php" class="RegistroU">Registro</a>
             <button class="Inactivos" name="busqueda" value="En_espera">En espera</button>
             <button class="Inactivos" name="busqueda" value="Resuelto">Terminados</button>
         </form>
@@ -84,6 +82,7 @@ $estado="Administrador";
             <th>Cedula tecnico encargado</th>
             <th>Diagnostico</th>
             <th>Editar servicio</th>
+            <th>Factura</th>
             <th>Reporte</th>
             <?php
                     foreach($equipos as $dato){
@@ -102,8 +101,12 @@ $estado="Administrador";
                     <a href="actualizarServicios.php?id=<?php echo $dato->idEquipos;?>" style="text-decoration:none; color:black" class="boton-actualizar">Servicio</a>
                 </td>
                 <td>
-                    <a href="../pdf/reporte.php?id=<?php echo $dato->idEquipos;?>&id2=<?php echo $dato->IdSurcursal?>&id3=<?php echo $dato->CedulaEmpleado?>" style="text-decoration:none; color:black" class="boton-actualizar" target="_blank">reporte</a>
+                    <a href="factura.php?id=<?php echo $dato->idEquipos;?>" style="text-decoration: none; color: black;" class="boton-actualizar">Factura</a>
                 </td>
+                <td>
+                    <a href="../pdf/reporte.php?id=<?php echo $dato->idEquipos;?>&id2=<?php echo $dato->IdSurcursal?>&id3=<?php echo $dato->CedulaEmpleado?>&dia=<?php echo $dato->Diagnostico?>" style="text-decoration:none; color:black" class="boton-actualizar" target="_blank">reporte</a>
+                </td>
+
             </tr>
                 <?php 
                     } 

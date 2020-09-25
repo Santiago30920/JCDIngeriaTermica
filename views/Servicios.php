@@ -85,7 +85,7 @@ $estado="Administrador";
                     <a href="factura.php?id=<?php echo $dato->idEquipos;?>" style="text-decoration: none; color: black;" class="boton-actualizar">Factura</a>
                 </td>
                 <td>
-                    <a href="../pdf/reporte.php?id=<?php echo $dato->idEquipos;?>&id2=<?php echo $dato->IdSurcursal?>&id3=<?php echo $dato->CedulaEmpleado?>&dia=<?php echo $dato->Diagnostico?>" style="text-decoration:none; color:black" class="boton-actualizar" target="_blank">reporte</a>
+                    <a href="../pdf/intermediario.php?id=<?php echo $dato->idEquipos;?>&id2=<?php echo $dato->IdSurcursal?>&id3=<?php echo $dato->CedulaEmpleado?>&dia=<?php echo $dato->Diagnostico?>" style="text-decoration:none; color:black" class="boton-actualizar" target="_blank">reporte</a>
                 </td>
 
             </tr>
