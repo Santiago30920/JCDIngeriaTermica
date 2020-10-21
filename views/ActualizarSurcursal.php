@@ -54,6 +54,7 @@ $estado="Administrador";
             <input type="text" name="txtNombre" value="<?php echo $empleado->NombreSucursal?>" class="Nombre" placeholder="Ingrese nombre surcursal" required>
             <input type="number" name="txtTelefono" class="Cedula" value="<?php echo $empleado->Telefono?>" placeholder="Ingrese telefono" required>
             <input type="txt" name="txtDireccion" class="Cedula" value="<?php echo $empleado->Direccion?>" placeholder="Ingrese Direccion" required>
+            <input type="email" name="txtCorreo" class="Cedula" value="<?php echo $empleado->correo?>" placeholder="Ingrese correo electronico" required>
             <select name="txtEstado" id="Estado" class="Rol" required>
                 <option value="Activo">Activo</option>
                 <option value="Inactivo">Inactivo</option>

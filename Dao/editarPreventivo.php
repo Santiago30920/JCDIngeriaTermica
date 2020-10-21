@@ -4,13 +4,13 @@
     }
     include '../Conexion/Conexion.php';
     $id = $_POST['id2'];
-    print_r($id);
-    // $Mant = $_POST['txtMant'];
+    print_r($id); 
+    $mes = $_POST['txtMes'];
     $Orden = $_POST['txtOrden'];
     $Observaciones = $_POST['txtObservaciones'];
     
-    $sentencia = $bd->prepare("UPDATE preventivo SET OrdenServicio = ?, Observaciones = ? WHERE idPreventivo = ?;");
-    $resultado = $sentencia->execute([$Orden, $Observaciones, $id]);
+    $sentencia = $bd->prepare("UPDATE preventivo SET OrdenServicio = ?, meses = ?, fecha_actual = ?, Observaciones = ? WHERE idPreventivo = ?;");
+    $resultado = $sentencia->execute([$Orden, $mes, Date("Y-m-d", time()),$Observaciones, $id]);
     if($resultado === TRUE){
          echo '<script type="text/javascript">
          alert("Se ha actualizado correctamente");

@@ -10,7 +10,11 @@
     margin-top: 3%;
     margin-left: 5%;
 }
+a{
+    text-decoration: none;
+}
 .login{
+    text-decoration: none;
     width: 5%;
     margin-left: 90%;
     margin-top: -15%;

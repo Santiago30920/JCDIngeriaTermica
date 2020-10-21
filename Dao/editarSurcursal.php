@@ -7,10 +7,11 @@
     $nombre = $_POST['txtNombre'];
     $telefono = $_POST['txtTelefono'];
     $direccion = $_POST['txtDireccion'];
+    $correo = $_POST['txtCorreo'];
     $estado = $_POST['txtEstado'];
     
-    $setencia = $bd->prepare("UPDATE sucursal SET NombreSucursal = ?, Telefono = ?, Direccion = ?, Estado = ? WHERE idSucursal = ?;");
-    $resultado = $setencia->execute([$nombre, $telefono, $direccion, $estado, $id]);
+    $setencia = $bd->prepare("UPDATE sucursal SET NombreSucursal = ?, Telefono = ?, Direccion = ?, correo = ?,Estado = ? WHERE idSucursal = ?;");
+    $resultado = $setencia->execute([$nombre, $telefono, $direccion, $correo, $estado, $id]);
     if($resultado === TRUE){
         echo '<script type="text/javascript">
         alert("Se ha actualizado correctamente");

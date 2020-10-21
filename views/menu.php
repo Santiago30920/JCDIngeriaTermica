@@ -7,15 +7,19 @@ if (!isset($_SESSION['Cedula'])) {
     $sentencia = $bd->query('SELECT * FROM empleados');
     $cliente = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
-    $sentencia1 = $bd->query('SELECT idEquipos, NombreEquipos, FechaIngreso, FechaSalida, Estado FROM equipos');
+    $sentencia1 = $bd->query('SELECT * FROM equipos');
     $cliente1 = $sentencia1->fetchAll(PDO::FETCH_OBJ);
+
+    $sentencia2 = $bd->query('SELECT * FROM preventivo');
+    $cliente2 = $sentencia2->fetchAll(PDO::FETCH_OBJ);
+
 } else {
     echo '<script type="text/javascript">
         alert("error en el sistema");
         window.location.href="../index.php";
         </script>';
 }
-foreach($cliente1 as $dato){
+foreach ($cliente1 as $dato) {
     $fecha = $dato->FechaIngreso;
     $fechaEntera = strtotime($fecha);
     $anio = date("Y", $fechaEntera);
@@ -278,29 +282,43 @@ $estado = "Administrador";
                         celda.style.backgroundColor = "#f0b19e";
                         celda.innerHTML = "<cite title='Fecha Actual'>" + midia + "</cite>";
                     }
-                    <?php foreach($cliente1 as $dato){
+                    <?php foreach ($cliente1 as $dato) {
                         $fecha = $dato->FechaSalida;
                         $fechaEntera = strtotime($fecha);
                         $anio = date("Y", $fechaEntera);
                         $mes = date("m", $fechaEntera);
                         $dia = date("d", $fechaEntera);
-                        ?>
-                    
-                    //fechas registradas
-                    if (mimes == <?php echo ($mes - 1)?> && midia == <?php echo $dia?> && mianno == <?php echo $anio?>){
-                        <?php if( $dato->Estado == "En espera"){?>
-                            celda.style.backgroundColor = "#ffed85";
-                            celda.innerHTML = "<a href='buscar_servicios.php?busqueda=<?php echo $dato->FechaSalida;?>'><cite  title='Fecha ocupada'>" + midia + "</cite></a>";
-
-                        <?php } elseif($dato->Estado == "Resuelto"){?>
-                            celda.style.backgroundColor = "#91cf70";
-                            celda.innerHTML = "<a href='buscar_servicios.php?busqueda=<?php echo $dato->FechaSalida;?>'><cite  title='Fecha ocupada'>" + midia + "</cite></a>";
-                    <?php }else{?>
-                            celda.style.backgroundColor = "#d46363";
-                            celda.innerHTML = "<a href='buscar_servicios.php?busqueda=<?php echo $dato->FechaSalida;?>'><cite  title='Fecha ocupada'>" + midia + "</cite></a>";
-                        <?php }?>
-                    } 
-            <?php }?>
+                    ?>
+                        //fechas registradas
+                        if (mimes == <?php echo ($mes - 1) ?> && midia == <?php echo $dia ?> && mianno == <?php echo $anio ?>) {
+                            <?php if ($dato->Estado == "En espera") { ?>
+                                celda.style.backgroundColor = "#ffed85";
+                                celda.innerHTML = "<a href='buscar_servicios.php?busqueda=<?php echo $dato->FechaSalida; ?>'><cite  title='Fecha ocupada'>" + midia + "</cite></a>";
+                            <?php } elseif ($dato->Estado == "Resuelto") { ?>
+                                celda.style.backgroundColor = "#91cf70";
+                                celda.innerHTML = "<a href='buscar_servicios.php?busqueda=<?php echo $dato->FechaSalida; ?>'><cite  title='Fecha ocupada'>" + midia + "</cite></a>";
+                            <?php } else { ?>
+                                celda.style.backgroundColor = "#d46363";
+                                celda.innerHTML = "<a href='buscar_servicios.php?busqueda=<?php echo $dato->FechaSalida; ?>'><cite  title='Fecha ocupada'>" + midia + "</cite></a>";
+                            <?php } ?>
+                        }
+                    <?php } ?>
+                    <?php foreach ($cliente2 as $dato1) {
+                        //fecha preventivo  
+                        $fechaPrev = $dato1->fecha_actual;
+                        $mesesReq = $dato1->meses;
+                        $fechaPrev1 = date("Y-m-d", strtotime("+" . $mesesReq . " months", strtotime($fechaPrev)));
+                        $anioPrev = date("Y", strtotime($fechaPrev1));
+                        $mesPrev = date("m", strtotime($fechaPrev1));
+                        $diaPrev = date("d", strtotime($fechaPrev1));
+                    ?>
+                    console.log(<?php echo $fechaPrev1?>);
+                        if (mimes == <?php echo $mesPrev ?> && midia == <?php echo $diaPrev ?> && mianno == <?php echo $anioPrev ?>) {
+                            <?php if(!isset($_GET['id'])){?>
+                                window.location.href = "../Dao/prevCorreos.php?id=<?php echo $dato1->idPreventivo ?>";
+                            <?php }?>
+                    }
+                    <?php } ?>
                     //pasar al siguiente día
                     midia = midia + 1;
                     diames.setDate(midia);

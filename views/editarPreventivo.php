@@ -49,21 +49,8 @@ $estado="Administrador";
                 <?php } 
             ?>
             </select>
-            <select name="txtMeses" id="meses" style="width:84%" class="Rol-50">
-                <option value="1">1 mes</option>
-                <option value="2">2 mes</option>
-                <option value="3">3 mes</option>
-                <option value="4">4 mes</option>
-                <option value="1">5 mes</option>
-                <option value="6">6 mes</option>
-                <option value="7">7 mes</option>
-                <option value="8">8 mes</option>
-                <option value="9">9 mes</option>
-                <option value="10">10 mes</option>
-                <option value="11">11 mes</option>
-                <option value="21">12mes</option>
-            </select>
             <?php foreach($equipos as $dato){?>
+                <input type="number" name="txtMes" value="<?php echo $dato->meses?>" class="Nombre" placeholder="Seleccione mes" required>
             <input type="text" name="txtOrden" value="<?php echo $dato->OrdenServicio?>" class="Nombre" placeholder="Orden de servicio" required>
             <textarea name="txtObservaciones" id="Observaciones" cols="155" rows="5" placeholder="Observaciones"><?php echo $dato->Observaciones?></textarea>
             

@@ -53,6 +53,7 @@ $estado="Administrador";
             <input type="text" name="txtNombre" class="Nombre" placeholder="Ingrese nombre surcursal" required>
             <input type="number" name="txtTelefono" class="Cedula" placeholder="Ingrese telefono" required>
             <input type="text" name="txtDireccion" class="Cedula" placeholder="Ingrese direccion" required>
+            <input type="email" name="txtCorreo" class="Cedula" placeholder="Ingrese correo electronico" required>
             <select name="txtNit" class="Rol" id="Rol" placeholder="Ingrese Nit" required>
                 <?php
                     foreach($empresas as $dato){

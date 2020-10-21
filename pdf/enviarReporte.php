@@ -100,15 +100,14 @@ $mail->SMTPSecure = 'tls';
 $mail->Username = "jcdingeneriatermica@gmail.com";
 $mail->Password = "JCDI1234";
 
-$correo = $row->Email;
-$sentencia = $bd->prepare("SELECT * FROM Empleados WHERE Email = ? LIMIT 1");
+$correo = $row->correo;
+$sentencia = $bd->prepare("SELECT * FROM sucursal WHERE correo = ? LIMIT 1");
 $resultado2 = $sentencia->execute([$correo]);
 $empleado = $sentencia->fetchAll(PDO::FETCH_OBJ);
 if ($resultado2 === TRUE) {
     foreach ($empleado as $dato) {
-        $cedula = $dato->Cedula;
-        $nombre = $dato->Nombre;
-        $apellidos = $dato->Apellidos;
+        $idSurcursal = $dato->idSucursal;
+        $nombre = $dato->NombreSucursal;
     }
 
     $mail->setFrom("jcdingeneriatermica@gmail.com");
@@ -116,9 +115,9 @@ if ($resultado2 === TRUE) {
     $mail->addReplyTo("auxiliar1@jcdingenieriatermica.com");
 
     $mail->isHTML(true);
-    $mail->Subject = 'Reporte de maquinaria para la empresa: ' . $nombre . ' ' . $apellidos;
-    $mail->Body = '<p>Nombre: ' . $nombre . ' ' . $apellidos . '<br>Con correo: ' . $correo . '<br>'
-        . 'Este es un reporte generado automaticamente de la maquinaria que se encuentra en mantenimiento.<br> 
+    $mail->Subject = 'Reporte de maquinaria para la empresa: ' . $nombre;
+    $mail->Body = '<p>Nombre: ' . $nombre . '<br>Con correo: ' . $correo . '<br>'
+         . 'Este es un reporte generado automaticamente de la maquinaria que se encuentra en mantenimiento.<br> 
             Si tiene dudaz por favor contacte a la empreza ya que por este medio, no sera respondido.';
 
     $mail->addStringAttachment($doc, "reporte" . Date("Y-m-d", time()) . ".pdf", 'base64', 'application/pdf');

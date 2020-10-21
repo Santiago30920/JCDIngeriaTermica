@@ -2,17 +2,17 @@
 session_start();
 if (!isset($_SESSION['Cedula'])) {
     header('Location:../index.php');
-}elseif(isset($_SESSION['Cedula'])){
+} elseif (isset($_SESSION['Cedula'])) {
     include '../Conexion/Conexion.php';
     $sentencia1 = $bd->query('SELECT * FROM equipos');
     $equipos = $sentencia1->fetchAll(PDO::FETCH_OBJ);
-}else{
+} else {
     echo '<script type="text/javascript">
     alert("error en el sistema");
     window.location.href="../index.php";
     </script>';
 }
-$estado="Administrador";
+$estado = "Administrador";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -28,7 +28,7 @@ $estado="Administrador";
     <link rel="stylesheet" href="../style/css/registrar.css">
     <link rel="stylesheet" href="../style/css/ServiciosR.css">
 </head>
-    
+
 <body>
     <header class="header-index">
         <img src="../style/log/Logo1.png" alt="logo" class="logo">
@@ -40,32 +40,19 @@ $estado="Administrador";
     <div class="registro">
         <h2>Preventivo</h2>
         <form action="../Dao/Preventivo.php" class="Registrar" method="POST">
-        <select name="txtMant" id="mant" class="Rol-50" style="width:84%">
-        <?php
-            foreach($equipos as $dato){?>
-            <option value="<?php echo $dato->idEquipos?>"><?php echo $dato->idEquipos?></option>
-                <?php } 
-            ?>
+            <select name="txtMant" id="mant" class="Rol-50" style="width:84%">
+                <?php
+                foreach ($equipos as $dato) { ?>
+                    <option value="<?php echo $dato->idEquipos ?>"><?php echo $dato->idEquipos ?></option>
+                <?php }
+                ?>
             </select>
-            <select name="txtMeses" id="meses" style="width:84%" class="Rol-50">
-                <option value="1">1 mes</option>
-                <option value="2">2 mes</option>
-                <option value="3">3 mes</option>
-                <option value="4">4 mes</option>
-                <option value="1">5 mes</option>
-                <option value="6">6 mes</option>
-                <option value="7">7 mes</option>
-                <option value="8">8 mes</option>
-                <option value="9">9 mes</option>
-                <option value="10">10 mes</option>
-                <option value="11">11 mes</option>
-                <option value="21">12mes</option>
-            </select>
-            <input type="text" name="txtOrden" class="Nombre" placeholder="Orden de servicio" required>
-            <textarea name="txtObservaciones" id="Observaciones" cols="155" rows="5" placeholder="Observaciones"></textarea>
-            <br>
-            <input type="submit" class="aceptar" value="Registrar">
-            <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>
+                <input type="number" name="txtMes" class="Nombre" placeholder="Seleccione mes" required>
+                <input type="text" name="txtOrden" class="Nombre" placeholder="Orden de servicio" required>
+                <textarea name="txtObservaciones" id="Observaciones" cols="155" rows="5" placeholder="Observaciones"></textarea>
+                <br>
+                <input type="submit" class="aceptar" value="Registrar">
+                <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>
             <br><br>
         </form>
     </div>
@@ -83,27 +70,18 @@ $estado="Administrador";
             <br><br>
             Tel:(57-1) 738 9054 - Cel: 310 252 9091
         </p>
-        <iframe class="mapas"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.0604328502938!2d-74.05326700431122!3d4.72802357476163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f8515297fb3ef%3A0x8bfff25310fd9c65!2sCl.%20145%20%2350-16%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1594662968879!5m2!1ses!2sco"
-            width="80%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-            tabindex="0">
+        <iframe class="mapas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.0604328502938!2d-74.05326700431122!3d4.72802357476163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f8515297fb3ef%3A0x8bfff25310fd9c65!2sCl.%20145%20%2350-16%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1594662968879!5m2!1ses!2sco" width="80%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
         </iframe>
     </footer>
     <div class="contenedor1">
         <div style="text-align: center;" class="referencias">
-            <a href="#">Equipos de refrigeración en Colombia</a> | <a
-                href="https://www.jcdingenieriatermica.com/maquinaria-para-cocina-de-restaurante">Maquinaria para cocina
-                de restaurante</a> | <a href="#">Equipos de refrigeración industrial en colombia</a> | <a
-                href="https://www.jcdingenieriatermica.com/repuestos-para-estufas-industriales">Repuestos para estufas
-                industriales</a> | <a href="#">Refrigeradores para restaurantes cocinas industriales</a> | <a
-                href="https://www.jcdingenieriatermica.com/licuadora-industrial">Licuadora industrial</a> | <a
-                href="#">Horno combi</a> | <a
-                href="https://www.jcdingenieriatermica.com/venta-de-hornos-para-pizza">Venta de hornos para pizza</a> |
-            <a href="#">Deshidratadora de frutas</a> | <a
-                href="https://www.jcdingenieriatermica.com/horno-turbochef">Horno turbochef precio</a>
+            <a href="#">Equipos de refrigeración en Colombia</a> | <a href="https://www.jcdingenieriatermica.com/maquinaria-para-cocina-de-restaurante">Maquinaria para cocina
+                de restaurante</a> | <a href="#">Equipos de refrigeración industrial en colombia</a> | <a href="https://www.jcdingenieriatermica.com/repuestos-para-estufas-industriales">Repuestos para estufas
+                industriales</a> | <a href="#">Refrigeradores para restaurantes cocinas industriales</a> | <a href="https://www.jcdingenieriatermica.com/licuadora-industrial">Licuadora industrial</a> | <a href="#">Horno combi</a> | <a href="https://www.jcdingenieriatermica.com/venta-de-hornos-para-pizza">Venta de hornos para pizza</a> |
+            <a href="#">Deshidratadora de frutas</a> | <a href="https://www.jcdingenieriatermica.com/horno-turbochef">Horno turbochef precio</a>
         </div>
     </div>
-    <script type="text/javascript" src="../style/js/calendario.js"></script>
+    <script type="text/javascript" src="../style/js/correosT.php"></script>
 </body>
 
 </html>

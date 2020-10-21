@@ -68,7 +68,7 @@ $estado="Administrador";
             <input type="hidden" name="id2" value="<?php echo $empresa->idEquipos;?>">
             <br>
             <input type="submit" class="actualizar" value="Actualizar">
-            <a href="../views/Servicios.php" class="Cancelar">Cancelar</a>
+            <a onclick="window.history.back();" class="Cancelar">Cancelar</a>
             <br><br>
         </form>
     </div>

@@ -62,6 +62,7 @@ $estado="Administrador";
             <th>Telefono</th>
             <th>Nit de empresa</th>
             <th>Direccion</th>
+            <th>Correo</th>
             <th>Estado</th>
             <th>Acciones</th>
             <?php
@@ -73,6 +74,7 @@ $estado="Administrador";
                 <td><?php echo $dato->Telefono?></td>
                 <td><?php echo $dato->NitEmpresa?></td>
                 <td><?php echo $dato->Direccion?></td>
+                <td><?php echo $dato->correo?></td>
                 <td><?php echo $dato->Estado?></td>
                 <td>
                     <a href="ActualizarSurcursal.php?id=<?php echo $dato->idSucursal;?>" class="boton-actualizar" style="text-decoration:none; color:black">Editar</a>
