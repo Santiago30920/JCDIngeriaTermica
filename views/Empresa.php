@@ -56,7 +56,7 @@ $estado="Administrador";
     </div>
     <div class="tabla" style="width: 45%; margin-left: 28%;">
         <h3>Lista de empresas registradas</h3>
-        <table class="usuario" style="margin-left: 10%;">
+        <table class="usuario" style="width: 100%; margin-left: -0%;">
             <th>Nit</th>
             <th>Nombre</th>
             <th>Telefono</th>

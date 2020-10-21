@@ -161,7 +161,7 @@ $estado = "Administrador";
         <a href="Empleados.php" class="guias">Empleados</a>
         <a href="Servicios.php" class="guias">Servicios</a>
     </div>
-    <footer>
+    <footer> 
         <div class="contactos">
             <img src="../style/log/telefono1.png" alt="telefo">
             <a href="#">Equipos: 311 8518533</a>

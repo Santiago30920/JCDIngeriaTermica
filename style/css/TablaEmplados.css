@@ -4,12 +4,14 @@
     padding: 0;   
 }
 .tabla{
-    margin-left: 25%;
-    max-width: 57%;
+    margin-left: 15%;
+    max-width: 70%;
     text-align: center;
     border: 2px solid #ddd;
     border-radius: 40px;
     margin-bottom: 20px;
+    overflow-y: auto;
+
 }
 .tabla h3{
     margin-top: 3%;
@@ -22,6 +24,7 @@
     margin-left: 20%;
 }
 .usuario th,td{
+    text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 12px; 
 }
@@ -48,12 +51,12 @@ tr:nth-child(even){
     border: 1px solid tomato;
     color: tomato;
 }
-@media(max-width: 700px){
+@media(max-width: 1400px){
     .tabla{
-        margin-left: 0%;
-        max-width: 100%;
-        border: none;
-        border-radius: none;
+        overflow-y: auto;
+        max-height: 10%;
+        display: block;
+        overflow-x: auto;
     }
     .tabla h3{
         margin-left: 70%;
@@ -61,7 +64,7 @@ tr:nth-child(even){
     }
     .usuario th,td{
         padding: 30px; 
-        font-size: 10px;
+        font-size: 16px;
     }
 }
 .Barra_de_busqueda{

@@ -56,7 +56,7 @@ $estado="Administrador";
     </div>
     <div class="tabla" style="width: 45%; margin-left: 28%;">
         <h3>Lista de surcursales registradas</h3>
-        <table class="usuario" style="margin-left: 4.5%;">
+        <table class="usuario" style="width: 100%; margin-left: -0%;">
             <th>Surcursal No.</th>
             <th>Nombre de la surcursal</th>
             <th>Telefono</th>

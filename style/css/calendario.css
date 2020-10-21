@@ -110,3 +110,24 @@
     color: white;
     border: none;
 }
+@media(max-width : 1400px){
+    .busqueda{
+        margin-top: -26%;
+    }
+}
+@media(max-width:1200px){
+    .busqueda{
+        margin-top: -33%;
+    }
+}
+@media(max-width : 1000px){
+    .busqueda{
+        width: 80%;
+        margin-top: 0%;
+        margin-left: 20%;
+    }
+    #calendario{
+        max-width: 75%;
+        margin-left: 20%;
+    }
+}
