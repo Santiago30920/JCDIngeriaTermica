@@ -5,12 +5,17 @@
     border-radius: 20px;
     border: 1px solid;
 }
+#nombre{
+    margin-right: 11%;
+}
+
 .Rol-50{
     width: 88.5%;
     padding: 1% 2%;
     margin-bottom: 1.5%;
     border-radius: 20px;    
 }.Descripcion{
+    max-width: 90%;
     padding: 2px 0px;
     border-radius: 20px;
 }
@@ -26,4 +31,31 @@
     border-radius: 20px;
     border: 1px solid;
     margin-left: -0%;
+}
+@media(max-width: 1400px){
+    .Descripcion{
+        max-width: 90%;
+    }.especificacion{
+        font-size: 14px;
+    }
+    #nombre{
+        margin-right: 11%;
+    }
+    #referencia{
+        margin-left: 0%;
+    }
+}
+@media(max-width: 1000px){
+    .Rol-50{
+        margin-top: 1.5%;
+    }
+}
+@media(max-width: 750px){
+    .Fecha{
+        width: 65%;
+    }
+    .especificacion{
+        margin-left: 3%;
+        font-size: 12px;
+    }
 }

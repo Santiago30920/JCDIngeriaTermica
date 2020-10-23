@@ -38,7 +38,7 @@ $estado="Administrador";
             <img src="../style/log/login.png" alt="login" class="login">
         </a>
         <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
-        <div class="menu" style="margin-right: 35%;">
+        <div class="menu" >
             <ul class="nav">
                 <li><a href="menu.php">Menú</a></li>
                 <li><a href="Empresa.php">Empresa</a></li>
@@ -48,14 +48,14 @@ $estado="Administrador";
             </ul>
         </div>
     </header>
-    <div class="registro">
+    <div class="registro"> 
             <br>
             <h2>Editar de servicios</h2>
             <br><br>
             <form action="../Dao/editarServicios.php" class="Registrar" method="POST">
-            <label class="especificacion" style="margin-left: -0%;">Fecha de ingreso:</label>
+            <label class="especificacion" >Fecha de ingreso:</label>
             <input type="date" name="txtIngreso" value="<?php echo $empresa->FechaIngreso?>" id="ingreso" class="Fecha">
-            <label class="especificacion" style="margin-left: 10%;">Fecha de salida:</label>
+            <label class="especificacion" >Fecha de salida:</label>
             <input type="date" name="txtSalida" value="<?php echo $empresa->FechaSalida?>" id="salida" class="Fecha">
             <select name="txtEstado" id="Diagnostico" class="Rol-50">
                 <option value="<?php echo $empresa->Estado?>"><?php echo $empresa->Estado?></option>

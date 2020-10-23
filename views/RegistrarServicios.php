@@ -40,7 +40,7 @@ $estado="Administrador";
             <img src="../style/log/login.png" alt="login" class="login">
         </a>
         <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
-        <div class="menu" style="margin-right: 35%;">
+        <div class="menu" >
             <ul class="nav">
             <li><a href="menu.php">Menú</a></li>
                 <li><a href="Empresa.php">Empresa</a></li>
@@ -53,10 +53,10 @@ $estado="Administrador";
     <div class="registro">
         <h2>Registro de equipos</h2>
         <form action="../Dao/RegistrarServicio.php" class="Registrar" method="POST">
-            <input type="text" name="txtNombre" class="Nombre-50" style="margin-right: 11%;" placeholder="Nombre del equipo">
-            <input type="text" style="margin: -0.3%;" name="txtReferencia" style="margin-left: -2%;" class="Nombre-50" placeholder="referencia">
-            <input type="text" name="txtVoltaje"  style="margin-right: 11%;" class="Nombre-50" placeholder="Voltaje">
-            <input type="text" style="margin: -0.3%;"name="txtModelo" style="margin-left: -2%;" class="Nombre-50" placeholder="Modelo">
+            <input type="text" name="txtNombre" class="Nombre-50" id="nombre"  placeholder="Nombre del equipo">
+            <input type="text" id="referencia" name="txtReferencia"  class="Nombre-50" placeholder="referencia">
+            <input type="text" name="txtVoltaje" id="nombre"  class="Nombre-50" placeholder="Voltaje">
+            <input type="text" name="txtModelo" d="referencia"  class="Nombre-50" placeholder="Modelo">
             <select name="txtGas" style="width: 90%;" id="gas" class="Rol-50">
                 <option value="Propano">Propano</option>
                 <option value="Natural">Natural</option>
@@ -72,8 +72,8 @@ $estado="Administrador";
                     } 
                 ?>
             </select>
-            <input type="text" name="txtMarca" style="margin-right: 11%;" class="Nombre-50" placeholder="Marca">
-            <input type="number" name="txtSerial"  style="margin-left: -0.3%;" class="Nombre-50" placeholder="Numero de serie">
+            <input type="text" name="txtMarca" id="nombre" s class="Nombre-50" placeholder="Marca">
+            <input type="number" name="txtSerial" d="referencia"   class="Nombre-50" placeholder="Numero de serie">
             <select name="txtSurcursal"  style="width: 90%;" id="gas" class="Rol-50">
                 <option value="">Seleccione nombre de la surcursal</option>
                 <?php 
@@ -98,9 +98,9 @@ $estado="Administrador";
             <br>
             <h2>Registro de servicios</h2>
             <br><br>
-            <label class="especificacion" style="margin-left: -0%;">Fecha de ingreso:</label>
+            <label class="especificacion" >Fecha de ingreso:</label>
             <input type="date" name="txtIngreso" id="ingreso" class="Fecha">
-            <label class="especificacion" style="margin-left: 8%;">Fecha de terminacion:</label>
+            <label class="especificacion" style="margin-left: 1%;">Fecha de terminacion:</label>
             <input type="date" name="txtSalida" id="salida" class="Fecha">
             <select name="txtDiagonostico" id="Diagnostico" class="Rol-50">
                 <option value="Preventivo">Preventivo</option>

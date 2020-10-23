@@ -41,7 +41,7 @@ $estado="Administrador";
             <img src="../style/log/login.png" alt="login" class="login">
         </a>
         <a href="../Dao/CerrarSession.php"><img src="../style/log/iniciar-sesion.png" class="Cerrar" alt="cerrar"></a>
-        <div class="menu" style="margin-right: 35%;">
+        <div class="menu" >
             <ul class="nav">
                 <li><a href="menu.php">Menú</a></li>
                 <li><a href="Empresa.php">Empresa</a></li>
@@ -54,10 +54,10 @@ $estado="Administrador";
     <div class="registro">
         <h2>Actualizacion de equipos</h2>
         <form action="../Dao/editarEquipos.php" class="Registrar" method="POST">
-            <input type="text" name="txtNombre" class="Nombre-50" value="<?php echo $empresa->NombreEquipos?>" style="margin-right: 11%;" placeholder="Nombre del equipo">
-            <input type="text" name="txtReferencia" style="margin-left: -2%;" value="<?php echo $empresa->Referencia?>" class="Nombre-50" placeholder="referencia">
-            <input type="text" name="txtVoltaje"  style="margin-right: 11%;" value="<?php echo $empresa->Voltaje?>" class="Nombre-50" placeholder="Voltaje">
-            <input type="text" name="txtModelo" style="margin-left: -2%;" value="<?php echo $empresa->Modelo?>" class="Nombre-50" placeholder="Modelo">
+            <input type="text" name="txtNombre" class="Nombre-50" id="nombre" value="<?php echo $empresa->NombreEquipos?>" placeholder="Nombre del equipo">
+            <input type="text" name="txtReferencia" id="referencia" value="<?php echo $empresa->Referencia?>" class="Nombre-50" placeholder="referencia">
+            <input type="text" name="txtVoltaje" id="nombre" value="<?php echo $empresa->Voltaje?>" class="Nombre-50" placeholder="Voltaje">
+            <input type="text" name="txtModelo" id="referencia" value="<?php echo $empresa->Modelo?>" class="Nombre-50" placeholder="Modelo">
             <select name="txtNombreE" id="gas" class="Rol-50">
             <option value="<?php echo $empresa->CedulaEmpleado?>"> <?php echo $empresa->CedulaEmpleado?></option>
                 <?php 
@@ -74,9 +74,9 @@ $estado="Administrador";
                 <option value="Natural">Natural</option>
                 <option value="Ninguno">Ninguno</option>
             </select>
-            <input type="text" name="txtMarca" value="<?php echo $empresa->Marca?>" style="margin-right: 11%;" class="Nombre-50" placeholder="Marca">
-            <input type="number" name="txtSerial" value="<?php echo $empresa->NumeroSerie?>" style="margin-left: -2%;" class="Nombre-50" placeholder="Numero de serie">
-            <input type="text" name="txtCapacidad" class="Nombre" value="<?php echo $empresa->Capacidad?>" style="width: 84.5%;" placeholder="Capacidad">
+            <input type="text" name="txtMarca" value="<?php echo $empresa->Marca?>" id="nombre" class="Nombre-50" placeholder="Marca">
+            <input type="number" name="txtSerial" value="<?php echo $empresa->NumeroSerie?>" id="referencia" class="Nombre-50" placeholder="Numero de serie">
+            <input type="text" name="txtCapacidad" class="Nombre" style="margin-left: 0.5%; width: 86%;" value="<?php echo $empresa->Capacidad?>" placeholder="Capacidad">
             <br>
             <textarea name="txtDescripcion" class="Descripcion" id="Descripcion" cols="165" rows="5" placeholder="Ingrese una descripcion"><?php echo $empresa->Descripcion?></textarea>
             <br><br>
